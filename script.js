@@ -4,10 +4,14 @@
    ===================================================================== */
 
 const SITE = {
-  // Lemon Squeezy: Store → Products → your product → Share → "Checkout overlay" link.
-  // Looks like https://YOURSTORE.lemonsqueezy.com/buy/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-  // "?embed=1" (added automatically) opens it as an overlay on this page.
-  checkoutUrl: "",
+  // Paddle (Billing) - fill in after Paddle approves your account and domain:
+  //   paddleToken:   Paddle > Developer tools > Authentication > client-side token  (live_... or test_...)
+  //   paddlePriceId: Paddle > Catalog > Products > Easy Wizard > price ID          (pri_...)
+  //   paddleSandbox: true only while testing with a sandbox account (test_ token)
+  // Until they are set, the Buy buttons scroll to the pricing card.
+  paddleToken: "",
+  paddlePriceId: "",
+  paddleSandbox: false,
 
   // Pricing card: current price, old (crossed-out) price and the discount badge.
   // Set oldPrice to "" when the sale ends (the crossed-out price and the badge disappear).
@@ -18,25 +22,33 @@ const SITE = {
   downloadWindows: "",   // e.g. link to EasyWizard-1.0.0-Windows-Setup.exe
   downloadMac: "",       // e.g. link to EasyWizard-1.0.0-macOS.zip
 
-  // Support / contact address for the footer link.
-  supportEmail: ""
+  // Support / contact address (footer link and the legal pages).
+  supportEmail: "",
+
+  // Name shown as the seller in the Terms (Paddle prefers the legal name of a sole proprietor).
+  legalName: "Anima Digital Audio"
 };
 
 document.documentElement.classList.remove("no-js");
 
 /* ---------- configuration → page ---------- */
 (function applyConfig () {
-  // Buy buttons → Lemon Squeezy overlay (or scroll to pricing while no URL is set)
+  // Buy buttons → Paddle overlay checkout (or scroll to the pricing card while Paddle isn't set up)
+  var paddleReady = false;
+  if (SITE.paddleToken && SITE.paddlePriceId && window.Paddle) {
+    try {
+      if (SITE.paddleSandbox) window.Paddle.Environment.set("sandbox");
+      window.Paddle.Initialize({ token: SITE.paddleToken });
+      paddleReady = true;
+    } catch (e) { console.warn("Paddle not initialised", e); }
+  }
   document.querySelectorAll("[data-checkout]").forEach(function (a) {
-    if (SITE.checkoutUrl) {
-      a.href = SITE.checkoutUrl + (SITE.checkoutUrl.indexOf("?") < 0 ? "?embed=1" : "&embed=1");
-    } else {
-      a.classList.remove("lemonsqueezy-button");   // no overlay without a checkout URL
-      a.href = "#pricing";
-    }
+    a.addEventListener("click", function (e) {
+      if (!paddleReady) return;                       // keeps the default: scroll to #pricing
+      e.preventDefault();
+      window.Paddle.Checkout.open({ items: [{ priceId: SITE.paddlePriceId, quantity: 1 }] });
+    });
   });
-  // lemon.js has loaded before this file (both are deferred, in order): re-scan the buttons
-  if (typeof window.createLemonSqueezy === "function") window.createLemonSqueezy();
 
   var price = document.querySelector("[data-price]");
   var oldPrice = document.querySelector("[data-price-old]");
@@ -68,8 +80,15 @@ document.documentElement.classList.remove("no-js");
 
   document.querySelectorAll("[data-support]").forEach(function (a) {
     if (SITE.supportEmail) a.href = "mailto:" + SITE.supportEmail;
-    else a.href = "#activation";
+    else a.href = (document.getElementById("activation") ? "" : "index.html") + "#activation";
   });
+  // legal pages: e-mail and seller name in one place
+  document.querySelectorAll("[data-email]").forEach(function (el) {
+    if (!SITE.supportEmail) return;
+    el.textContent = SITE.supportEmail;
+    if (el.tagName === "A") el.href = "mailto:" + SITE.supportEmail;
+  });
+  document.querySelectorAll("[data-legal-name]").forEach(function (el) { el.textContent = SITE.legalName; });
 })();
 
 /* ---------- header: background on scroll + mobile menu ---------- */

@@ -23,8 +23,8 @@
   <link rel="preload" href="assets/fonts/AnimaDisplay.woff" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" href="style.css">
 
-  <!-- Lemon Squeezy overlay checkout (turns every .lemonsqueezy-button into a pop-up checkout) -->
-  <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+  <!-- Paddle overlay checkout (Paddle.com is the merchant of record) -->
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -46,7 +46,7 @@
       <a href="#activation">License</a>
       <a href="#mac">Mac Guide</a>
       <a href="#pricing">Pricing</a>
-      <a class="btn btn--small btn--primary lemonsqueezy-button" data-checkout href="#pricing">Buy Now</a>
+      <a class="btn btn--small btn--primary" data-checkout href="#pricing">Buy Now</a>
     </nav>
   </div>
 </header>
@@ -70,7 +70,7 @@
 
       <div class="hero__cta">
         <a class="btn btn--primary btn--large" href="#demo">Get Free Demo</a>
-        <a class="btn btn--chrome btn--large lemonsqueezy-button" data-checkout href="#pricing">Buy Now</a>
+        <a class="btn btn--chrome btn--large" data-checkout href="#pricing">Buy Now</a>
       </div>
 
       <ul class="hero__facts">
@@ -224,8 +224,8 @@
         <li>Offline activation — no account, no iLok</li>
         <li>Free 14-day trial before you buy</li>
       </ul>
-      <a class="btn btn--primary btn--large btn--block lemonsqueezy-button" data-checkout href="#pricing">Buy Now</a>
-      <p class="price__secure">Secure checkout by Lemon Squeezy</p>
+      <a class="btn btn--primary btn--large btn--block" data-checkout href="#pricing">Buy Now</a>
+      <p class="price__secure">Secure checkout by Paddle · cards, PayPal, Apple Pay &amp; more · VAT handled</p>
     </div>
   </div>
 </section>
@@ -236,14 +236,14 @@
     <header class="section__head reveal">
       <p class="eyebrow">License &amp; activation</p>
       <h2>Buy, activate, <span class="chrome">make noise.</span></h2>
-      <p class="section__lead">Your order is handled by Lemon Squeezy and confirmed by email right after checkout. Activation happens inside the plug-in and works completely offline.</p>
+      <p class="section__lead">Your order is processed by Paddle, our reseller and merchant of record, and confirmed by email right after checkout. Activation happens inside the plug-in and works completely offline.</p>
     </header>
 
     <ol class="steps">
       <li class="step reveal">
         <span class="step__n">01</span>
         <h3>Check out</h3>
-        <p>Pay securely with Lemon Squeezy. Your receipt and order details arrive by email immediately.</p>
+        <p>Pay securely through Paddle. Your receipt and order details arrive by email immediately.</p>
       </li>
       <li class="step reveal">
         <span class="step__n">02</span>
@@ -325,6 +325,9 @@ killall -9 AudioComponentRegistrar</code></pre>
       <a href="#mac">Mac installation</a>
       <a href="#activation">Activation help</a>
       <a data-support href="#">Support &amp; contact</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="refund.html">Refund Policy</a>
     </nav>
     <p class="footer__copy">© 2026 Anima Digital Audio. All rights reserved.<br>
       <small>VST is a trademark of Steinberg Media Technologies GmbH. Audio Units, macOS and Logic Pro are trademarks of Apple Inc.</small></p>

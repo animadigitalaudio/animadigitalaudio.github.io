@@ -884,3 +884,16 @@ h3 { font-size: 19px; line-height: 1.3; letter-spacing: 0.02em; }
   .footer__inner { grid-template-columns: 1fr; }
   .footer__links { justify-content: flex-start; }
 }
+
+/* =====================================================================
+   LEGAL PAGES (terms / privacy / refund)
+   ===================================================================== */
+.legal { padding: calc(var(--nav-h) + 56px) 0 90px; }
+.legal__wrap { max-width: 820px; }
+.legal h1 { font-size: clamp(32px, 4.5vw, 48px); line-height: 1.1; color: var(--title); text-shadow: 0 0 22px rgba(26,216,248,.35); }
+.legal__date { margin: 12px 0 40px; color: var(--dim); font-size: 14px; }
+.legal section { padding: 26px 0; border-top: 1px solid var(--line); }
+.legal h2 { font-size: 20px; margin-bottom: 12px; letter-spacing: .03em; }
+.legal p { margin: 0 0 12px; color: #c3ccd8; font-size: 16px; max-width: 70ch; }
+.legal a { color: var(--neon); border-bottom: 1px solid rgba(34,211,238,.35); }
+.legal a:hover { border-bottom-color: var(--neon); }
