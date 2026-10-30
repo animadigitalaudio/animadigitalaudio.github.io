@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Easy Wizard — Synth &amp; Fx plugin by Anima Digital Audio</title>
+  <meta name="description" content="Easy Wizard (Synth) and Easy Wizard (Fx): a hybrid sampler-synth and multi-effect plugin with 15 glitch and space modules, the 3D Wizard Chaos cube, macros, LFO and envelope follower. VST3 / AU for Windows and macOS (Apple Silicon + Intel).">
+  <meta name="theme-color" content="#07090d">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Easy Wizard — Synth &amp; Fx by Anima Digital Audio">
+  <meta property="og:description" content="Hybrid sampler-synth and multi-effect plugin. VST3 / AU, Windows &amp; macOS. Free 14-day trial.">
+  <meta property="og:image" content="https://animadigitalaudio.github.io/assets/ui-synth.jpg">
+  <meta property="og:url" content="https://animadigitalaudio.github.io/">
+  <link rel="canonical" href="https://animadigitalaudio.github.io/">
+
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/AnimaDisplay.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Lemon Squeezy overlay checkout (turns every .lemonsqueezy-button into a pop-up checkout) -->
+  <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- ============================== HEADER ============================== -->
+<header class="nav" id="top">
+  <div class="nav__inner">
+    <a class="brand" href="#top" aria-label="Anima Digital Audio — home">
+      <img src="assets/logo-mark.png" alt="" width="42" height="42">
+      <span>Anima <em>Digital Audio</em></span>
+    </a>
+
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span>
+    </button>
+
+    <nav class="nav__links" id="nav-links">
+      <a href="#features">Features</a>
+      <a href="#activation">License</a>
+      <a href="#mac">Mac Guide</a>
+      <a href="#pricing">Pricing</a>
+      <a class="btn btn--small btn--primary lemonsqueezy-button" data-checkout href="#pricing">Buy Now</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================== HERO ============================== -->
+<section class="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+
+  <div class="wrap hero__inner">
+    <div class="hero__copy reveal">
+      <p class="eyebrow"><span class="dot"></span>VST3 · AU · Windows &amp; macOS</p>
+      <h1 class="hero__title"><span>Easy</span> <span>Wizard</span></h1>
+      <p class="hero__tags"><span>(Synth)</span><span>(Fx)</span></p>
+      <p class="hero__lead">
+        A unique hybrid synthesizer and multi-effect plugin built for pristine DSP,
+        a zero-latency feel, and endless sonic manipulation.
+      </p>
+
+      <div class="hero__cta">
+        <a class="btn btn--primary btn--large" href="#demo">Get Free Demo</a>
+        <a class="btn btn--chrome btn--large lemonsqueezy-button" data-checkout href="#pricing">Buy Now</a>
+      </div>
+
+      <ul class="hero__facts">
+        <li><strong>15</strong> FX modules</li>
+        <li><strong>2</strong> plug-ins in one license</li>
+        <li><strong>14</strong>-day full trial</li>
+      </ul>
+    </div>
+
+    <figure class="hero__shot reveal">
+      <div class="shot-switch" role="tablist" aria-label="Plug-in version">
+        <button role="tab" aria-selected="true"  data-shot="synth">Easy Wizard (Synth)</button>
+        <button role="tab" aria-selected="false" data-shot="fx">Easy Wizard (Fx)</button>
+      </div>
+      <div class="shot-frame">
+        <!-- Replace with a GIF / video of the Wizard Chaos cube any time: keep the same class -->
+        <img class="shot is-active" data-shot="synth" src="assets/ui-synth.jpg" width="1240" height="1000"
+             alt="Easy Wizard (Synth) interface: source and result waveforms, Rhythm, Texture and Space module tabs, the Wizard Chaos cube, macros and a keyboard">
+        <img class="shot" data-shot="fx" src="assets/ui-fx.jpg" width="1240" height="1000" loading="lazy"
+             alt="Easy Wizard (Fx) interface in Simple mode: live track input, three macros, the Wizard Chaos cube and a grid of 15 FX modules">
+      </div>
+      <figcaption>Actual plug-in interface</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================== FEATURES ============================== -->
+<section class="section" id="features">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <p class="eyebrow">Technical highlights</p>
+      <h2>Built like an instrument.<br><span class="chrome">Plays like chaos.</span></h2>
+      <p class="section__lead">Every knob, macro and preset change is smoothed inside the audio engine, so you can perform with it live.</p>
+    </header>
+
+    <div class="features">
+      <article class="card card--wide reveal">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M4 30c6 0 6-12 12-12s6 12 12 12 6-12 12-12 4 6 4 6" /></svg>
+        </div>
+        <h3>Pristine DSP, zero clicks</h3>
+        <p>Full parameter smoothing on every control: turn knobs, switch modules, move macros or jump between presets without clicks, zipper noise or volume jumps. Modules fade in and out instead of switching hard, and an automatic gain stage keeps presets at a consistent level.</p>
+        <ul class="ticks">
+          <li>Smoothed knobs, macros and modulation</li>
+          <li>Click-free module on/off and preset changes</li>
+          <li>Auto-gain against sudden loudness jumps</li>
+        </ul>
+      </article>
+
+      <article class="card card--cube reveal">
+        <div class="wcube-stage">
+          <button class="wcube" type="button" aria-label="Roll the Wizard Chaos cube">
+            <span class="wcube__spin">
+              <span class="wcube__body">
+                <span class="f f1"><i class="c"></i></span>
+                <span class="f f2"><i class="tl"></i><i class="br"></i></span>
+                <span class="f f3"><i class="tl"></i><i class="c"></i><i class="br"></i></span>
+                <span class="f f4"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></span>
+                <span class="f f5"><i class="tl"></i><i class="tr"></i><i class="c"></i><i class="bl"></i><i class="br"></i></span>
+                <span class="f f6"><i class="tl"></i><i class="tr"></i><i class="ml"></i><i class="mr"></i><i class="bl"></i><i class="br"></i></span>
+              </span>
+            </span>
+          </button>
+          <span class="wcube__shadow" aria-hidden="true"></span>
+          <span class="wcube__hint">Click to roll</span>
+        </div>
+        <h3>Wizard Chaos cube</h3>
+        <p>One click on the 3D cube rolls a new combination of modules and settings, instantly and from the very first click. <em>Chaos</em> sets how wild it gets, <em>Interplay</em> how the modules work together. Love a result? <em>Save As</em> keeps it as your own preset.</p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M4 24c5-14 9-14 14 0s9 14 14 0 9-14 12-6" /><circle cx="24" cy="24" r="2" /></svg>
+        </div>
+        <h3>LFO, Envelope Follower &amp; Macros</h3>
+        <p>A tempo-synced LFO and an envelope follower can drive any module parameter. Three macros, each with its own target and depth, put the moves you need under one knob — perfect for automation.</p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><rect x="6" y="8" width="10" height="32" rx="2"/><rect x="19" y="16" width="10" height="24" rx="2"/><rect x="32" y="4" width="10" height="36" rx="2"/></svg>
+        </div>
+        <h3>15 modules, 3 worlds</h3>
+        <p><strong>Rhythm:</strong> Stutter, Reverse, Tape Stop, Half-Time, Duck. <strong>Texture:</strong> Granular, Comb, Freq Shift, Drive, Crush. <strong>Space:</strong> Wow, Filter, Delay, Reverb, Dimension.</p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M8 34V14l12 10-12 10zM28 14h12M28 24h12M28 34h12"/></svg>
+        </div>
+        <h3>Synth &amp; Fx versions</h3>
+        <p><strong>Synth</strong> loads any sample and plays it with MIDI through the whole engine. <strong>Fx</strong> sits on any track and processes its audio in real time, and a sidechain input can drive the Duck module.</p>
+      </article>
+
+      <article class="card card--wide-end reveal">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="24" rx="3"/><path d="M18 40h12M24 34v6"/></svg>
+        </div>
+        <h3>VST3 &amp; AU, Win &amp; Mac</h3>
+        <p>VST3 for Windows and macOS, Audio Unit for Logic Pro and GarageBand, plus a standalone app on Windows. Native on Apple Silicon (M1–M4) and Intel Macs as a Universal Binary.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== DEMO ============================== -->
+<section class="section section--band" id="demo">
+  <div class="wrap demo reveal">
+    <div>
+      <p class="eyebrow">Free demo</p>
+      <h2>Try everything for 14 days</h2>
+      <p class="section__lead">The demo is the full plug-in: every module, every preset, no noise bursts and no limits. When you're ready, activate it with your license and keep working on the same projects.</p>
+    </div>
+    <div class="demo__buttons">
+      <a class="dl" data-download="win" href="#">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5l7.5-1v7H3zm8.5-1.2L21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zm8.5 0H21V21l-9.5-1.3z"/></svg>
+        <span><strong>Windows</strong><small>Installer · VST3 + Standalone · 64-bit</small></span>
+      </a>
+      <a class="dl" data-download="mac" href="#">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.6zM14.1 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
+        <span><strong>macOS</strong><small>VST3 + AU · Apple Silicon &amp; Intel</small></span>
+      </a>
+      <p class="demo__note">Mac users: see the <a href="#mac">one-time install step</a> below.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== PRICING ============================== -->
+<section class="section" id="pricing">
+  <div class="wrap">
+    <header class="section__head section__head--center reveal">
+      <p class="eyebrow">Pricing</p>
+      <h2>One license. <span class="chrome">Both plug-ins.</span></h2>
+    </header>
+
+    <div class="price reveal">
+      <div class="price__top">
+        <h3>Easy Wizard</h3>
+        <p class="price__sub">Synth + Fx · Windows &amp; macOS</p>
+        <div class="price__row">
+          <span class="price__old" data-price-old><s>$49.99</s></span>
+          <span class="price__amount" data-price>$29.99</span>
+          <span class="price__badge" data-price-badge>−40%</span>
+        </div>
+        <p class="price__note">Launch price</p>
+      </div>
+      <ul class="ticks">
+        <li>Easy Wizard (Synth) and Easy Wizard (Fx)</li>
+        <li>VST3, AU and Windows standalone</li>
+        <li>Universal Binary for Apple Silicon &amp; Intel</li>
+        <li>Offline activation — no account, no iLok</li>
+        <li>Free 14-day trial before you buy</li>
+      </ul>
+      <a class="btn btn--primary btn--large btn--block lemonsqueezy-button" data-checkout href="#pricing">Buy Now</a>
+      <p class="price__secure">Secure checkout by Lemon Squeezy</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== LICENSE & ACTIVATION ============================== -->
+<section class="section section--band" id="activation">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <p class="eyebrow">License &amp; activation</p>
+      <h2>Buy, activate, <span class="chrome">make noise.</span></h2>
+      <p class="section__lead">Your order is handled by Lemon Squeezy and confirmed by email right after checkout. Activation happens inside the plug-in and works completely offline.</p>
+    </header>
+
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="step__n">01</span>
+        <h3>Check out</h3>
+        <p>Pay securely with Lemon Squeezy. Your receipt and order details arrive by email immediately.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step__n">02</span>
+        <h3>Copy your Hardware ID</h3>
+        <p>In the plug-in, open <strong>Activate</strong> and press <strong>Copy</strong> next to your Hardware ID. Send it to us with your order number.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step__n">03</span>
+        <h3>Receive your license</h3>
+        <p>You get a personal <code>license.lic</code> file by email, made for your computer.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step__n">04</span>
+        <h3>Load it — done</h3>
+        <p>Click <strong>Load license file…</strong> (or paste its text). Both Synth and Fx are unlocked, no internet connection needed.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================== MAC GUIDE ============================== -->
+<section class="section" id="mac">
+  <div class="wrap mac">
+    <header class="section__head reveal">
+      <p class="eyebrow">macOS installation</p>
+      <h2>One Terminal command <span class="chrome">and you're in.</span></h2>
+      <p class="section__lead">Easy Wizard is distributed outside the Mac App Store, so macOS Gatekeeper quarantines the download and may say the plug-in "is damaged" or "can't be verified". The files are fine — remove the quarantine flag once.</p>
+    </header>
+
+    <div class="mac__grid">
+      <ol class="mac__steps reveal">
+        <li><strong>Easiest:</strong> unzip the download and double-click <code>Install Easy Wizard.command</code>. If macOS blocks it, right-click → <em>Open</em>.</li>
+        <li><strong>Manual:</strong> copy the <code>.vst3</code> files to <code>/Library/Audio/Plug-Ins/VST3/</code> and the <code>.component</code> files to <code>/Library/Audio/Plug-Ins/Components/</code>.</li>
+        <li>Open <em>Terminal</em> (Applications → Utilities) and run the command for each plug-in. Enter your Mac password when asked — it stays invisible while you type.</li>
+        <li>Restart your DAW or rescan plug-ins.</li>
+      </ol>
+
+      <div class="code-stack reveal">
+        <div class="code">
+          <div class="code__bar">
+            <span class="code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="code__title">General form</span>
+            <button class="copy" data-copy-target="cmd-generic" type="button">Copy</button>
+          </div>
+          <pre id="cmd-generic"><code>sudo xattr -rd com.apple.quarantine /path/to/plugin.vst3</code></pre>
+        </div>
+
+        <div class="code">
+          <div class="code__bar">
+            <span class="code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="code__title">All four Easy Wizard plug-ins</span>
+            <button class="copy" data-copy-target="cmd-all" type="button">Copy</button>
+          </div>
+          <pre id="cmd-all"><code>sudo xattr -rd com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/Easy Wizard (Synth).vst3"
+sudo xattr -rd com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/Easy Wizard (Fx).vst3"
+sudo xattr -rd com.apple.quarantine "/Library/Audio/Plug-Ins/Components/Easy Wizard (Synth).component"
+sudo xattr -rd com.apple.quarantine "/Library/Audio/Plug-Ins/Components/Easy Wizard (Fx).component"
+killall -9 AudioComponentRegistrar</code></pre>
+        </div>
+        <p class="code-note">Keep the quotes — the file names contain spaces and brackets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__brand">
+      <img src="assets/logo-mark.png" alt="" width="44" height="44" loading="lazy">
+      <div>
+        <strong>Anima Digital Audio</strong>
+        <small>Easy Wizard (Synth) · Easy Wizard (Fx)</small>
+      </div>
+    </div>
+    <nav class="footer__links" aria-label="Support">
+      <a href="#mac">Mac installation</a>
+      <a href="#activation">Activation help</a>
+      <a data-support href="#">Support &amp; contact</a>
+    </nav>
+    <p class="footer__copy">© 2026 Anima Digital Audio. All rights reserved.<br>
+      <small>VST is a trademark of Steinberg Media Technologies GmbH. Audio Units, macOS and Logic Pro are trademarks of Apple Inc.</small></p>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
