@@ -18,7 +18,7 @@ const SITE = {
   downloadMac: "",       // e.g. link to EasyWizard-1.0.0-macOS.zip
 
   // Support / contact address (footer link and the legal pages).
-  supportEmail: "shallkrayn@proton.me",
+  supportEmail: "support@animadigitalaudio.com",
 
   // Name shown as the seller in the Terms and Privacy pages (legal name of a sole proprietor).
   legalName: "Anima Digital Audio"
