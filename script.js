@@ -4,14 +4,9 @@
    ===================================================================== */
 
 const SITE = {
-  // Paddle (Billing) - fill in after Paddle approves your account and domain:
-  //   paddleToken:   Paddle > Developer tools > Authentication > client-side token  (live_... or test_...)
-  //   paddlePriceId: Paddle > Catalog > Products > Easy Wizard > price ID          (pri_...)
-  //   paddleSandbox: true only while testing with a sandbox account (test_ token)
-  // Until they are set, the Buy buttons scroll to the pricing card.
-  paddleToken: "",
-  paddlePriceId: "",
-  paddleSandbox: false,
+  // Creem: Products → Easy Wizard → Share → copy the payment link and paste it here
+  // (looks like https://www.creem.io/payment/prod_...). Empty = Buy buttons scroll to the pricing card.
+  checkoutUrl: "",
 
   // Pricing card: current price, old (crossed-out) price and the discount badge.
   // Set oldPrice to "" when the sale ends (the crossed-out price and the badge disappear).
@@ -25,7 +20,7 @@ const SITE = {
   // Support / contact address (footer link and the legal pages).
   supportEmail: "",
 
-  // Name shown as the seller in the Terms (Paddle prefers the legal name of a sole proprietor).
+  // Name shown as the seller in the Terms and Privacy pages (legal name of a sole proprietor).
   legalName: "Anima Digital Audio"
 };
 
@@ -33,22 +28,13 @@ document.documentElement.classList.remove("no-js");
 
 /* ---------- configuration → page ---------- */
 (function applyConfig () {
-  // Buy buttons → Paddle overlay checkout (or scroll to the pricing card while Paddle isn't set up)
-  var paddleReady = false;
-  if (SITE.paddleToken && SITE.paddlePriceId && window.Paddle) {
-    try {
-      if (SITE.paddleSandbox) window.Paddle.Environment.set("sandbox");
-      window.Paddle.Initialize({ token: SITE.paddleToken });
-      paddleReady = true;
-    } catch (e) { console.warn("Paddle not initialised", e); }
-  }
-  document.querySelectorAll("[data-checkout]").forEach(function (a) {
-    a.addEventListener("click", function (e) {
-      if (!paddleReady) return;                       // keeps the default: scroll to #pricing
-      e.preventDefault();
-      window.Paddle.Checkout.open({ items: [{ priceId: SITE.paddlePriceId, quantity: 1 }] });
+  // Buy buttons → Creem checkout page (or scroll to the pricing card while no link is set)
+  if (SITE.checkoutUrl) {
+    document.querySelectorAll("[data-checkout]").forEach(function (a) {
+      a.href = SITE.checkoutUrl;
+      a.rel = "noopener";
     });
-  });
+  }
 
   var price = document.querySelector("[data-price]");
   var oldPrice = document.querySelector("[data-price-old]");
