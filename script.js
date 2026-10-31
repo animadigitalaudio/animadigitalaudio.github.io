@@ -18,7 +18,7 @@ const SITE = {
   downloadMac: "",       // e.g. link to EasyWizard-1.0.0-macOS.zip
 
   // Support / contact address (footer link and the legal pages).
-  supportEmail: "",
+  supportEmail: "shallkrayn@proton.me",
 
   // Name shown as the seller in the Terms and Privacy pages (legal name of a sole proprietor).
   legalName: "Anima Digital Audio"
@@ -75,6 +75,10 @@ document.documentElement.classList.remove("no-js");
     if (el.tagName === "A") el.href = "mailto:" + SITE.supportEmail;
   });
   document.querySelectorAll("[data-legal-name]").forEach(function (el) { el.textContent = SITE.legalName; });
+  // "by <legal name>" is only shown when it differs from the brand
+  document.querySelectorAll("[data-legal-wrap]").forEach(function (el) {
+    if (SITE.legalName === "Anima Digital Audio") el.remove();
+  });
 })();
 
 /* ---------- header: background on scroll + mobile menu ---------- */
