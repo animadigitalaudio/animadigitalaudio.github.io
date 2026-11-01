@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Activate Easy Wizard — Anima Digital Audio</title>
+  <meta name="description" content="Activate your Easy Wizard license: enter your license key and Hardware ID to download license.lic.">
+  <meta name="theme-color" content="#07090d">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="legal-page">
+<header class="nav is-scrolled" id="top">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="Anima Digital Audio — home">
+      <img src="assets/logo-mark.png" alt="" width="42" height="42">
+      <span>Anima <em>Digital Audio</em></span>
+    </a>
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
+    <nav class="nav__links" id="nav-links">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#activation">License</a>
+      <a href="index.html#mac">Mac Guide</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a class="btn btn--small btn--primary" data-checkout href="index.html#pricing">Buy Now</a>
+    </nav>
+  </div>
+</header>
+<main class="legal">
+  <div class="wrap legal__wrap">
+    <p class="eyebrow">License</p>
+    <h1>Activate Easy Wizard</h1>
+    <p class="legal__date">One license unlocks Easy Wizard (Synth) and Easy Wizard (Fx) on your computer.</p>
+
+    <section>
+      <form class="act" id="act" novalidate>
+        <label>License key
+          <input name="key" autocomplete="off" spellcheck="false" placeholder="From your purchase e-mail" required>
+          <small>Shown after payment and in your Creem receipt e-mail.</small>
+        </label>
+        <label>Hardware ID
+          <input name="hwid" autocomplete="off" spellcheck="false" placeholder="1A2B-3C4D-5E6F-7A8B-9C0D" required>
+          <small>In the plug-in: click the <strong>TRIAL MODE</strong> badge → <strong>COPY</strong>. Use the Hardware ID of the computer you make music on.</small>
+        </label>
+        <label>Your name
+          <input name="name" autocomplete="name" maxlength="80" placeholder="e.g. Alex Smith" required>
+          <small>Shown in the plug-in as “Licensed to”.</small>
+        </label>
+        <button class="btn btn--primary btn--large" type="submit">Get license file</button>
+        <p class="act__msg" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="act__done" id="act-done">
+        <p><strong>Your license file is ready.</strong> If the download didn't start, <a class="link" id="act-again" href="#">click here</a>.</p>
+        <p>Now open Easy Wizard, click <strong>TRIAL MODE</strong> → <strong>LOAD LICENSE FILE</strong> and select <code>license.lic</code> (usually in your Downloads folder). Done — both plug-ins are unlocked.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Need help?</h2>
+      <p>New computer, lost key or anything else — write to <a data-email href="mailto:support@animadigitalaudio.com">support@animadigitalaudio.com</a> with your order number.</p>
+    </section>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__brand">
+      <img src="assets/logo-mark.png" alt="" width="44" height="44" loading="lazy">
+      <div><strong>Anima Digital Audio</strong><small>Easy Wizard (Synth) · Easy Wizard (Fx)</small></div>
+    </div>
+    <nav class="footer__links" aria-label="Legal">
+      <a href="index.html">Home</a>
+      <a data-support href="mailto:support@animadigitalaudio.com">Support &amp; contact</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="refund.html">Refund Policy</a>
+    </nav>
+    <p class="footer__contact">Support: <a data-email href="mailto:support@animadigitalaudio.com">support@animadigitalaudio.com</a></p>
+    <p class="footer__copy">© 2026 Anima Digital Audio. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

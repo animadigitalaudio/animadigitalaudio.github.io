@@ -17,6 +17,9 @@ const SITE = {
   downloadWindows: "",   // e.g. link to EasyWizard-1.0.0-Windows-Setup.exe
   downloadMac: "",       // e.g. link to EasyWizard-1.0.0-macOS.zip
 
+  // License activation server (Cloudflare Worker), used by activate.html.
+  activateUrl: "https://ewf-activate.pinqsnake.workers.dev",
+
   // Support / contact address (footer link and the legal pages).
   supportEmail: "support@animadigitalaudio.com",
 
@@ -216,3 +219,61 @@ function toast (msg) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(function () { t.classList.remove("is-on"); }, 2200);
 }
+
+/* ---------- activation page ---------- */
+(function activation () {
+  var form = document.getElementById("act");
+  if (!form) return;
+  var msg = form.querySelector(".act__msg");
+  var btn = form.querySelector("button[type=submit]");
+  var done = document.getElementById("act-done");
+  var again = document.getElementById("act-again");
+  var blobUrl = "";
+
+  // ?key=... in the link pre-fills the key
+  var q = new URLSearchParams(location.search);
+  if (q.get("key")) form.key.value = q.get("key");
+
+  function say (text, kind) {
+    msg.textContent = text;
+    msg.className = "act__msg" + (kind ? " is-" + kind : "");
+  }
+  function save () {
+    var a = document.createElement("a");
+    a.href = blobUrl;
+    a.download = "license.lic";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+  again.addEventListener("click", function (e) { e.preventDefault(); if (blobUrl) save(); });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var key = form.key.value.trim(), hwid = form.hwid.value.trim(), name = form.name.value.trim();
+    var hex = hwid.replace(/[^0-9a-fA-F]/g, "");
+    if (!key) return say("Please enter your license key.", "error");
+    if (hex.length !== 20) return say("The Hardware ID must look like 1A2B-3C4D-5E6F-7A8B-9C0D — click COPY in the plug-in.", "error");
+    if (!name) return say("Please enter your name.", "error");
+    if (!SITE.activateUrl) return say("Online activation is being set up — please e-mail " + SITE.supportEmail + " with your order number and Hardware ID.", "error");
+
+    btn.disabled = true;
+    say("Activating…");
+    fetch(SITE.activateUrl.replace(/\/$/, "") + "/activate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ key: key, hwid: hwid, name: name })
+    }).then(function (r) { return r.json(); }).then(function (j) {
+      if (!j.ok) throw new Error(j.error || "Activation failed.");
+      if (blobUrl) URL.revokeObjectURL(blobUrl);
+      blobUrl = URL.createObjectURL(new Blob([j.license], { type: "application/octet-stream" }));
+      save();
+      say("Activated for " + j.hwid + ".", "ok");
+      done.classList.add("is-on");
+      done.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }).catch(function (err) {
+      say(err && err.message && err.message !== "Failed to fetch" ? err.message
+          : "Could not reach the activation server. Please check your connection and try again.", "error");
+    }).then(function () { btn.disabled = false; });
+  });
+})();
