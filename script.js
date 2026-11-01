@@ -6,7 +6,7 @@
 const SITE = {
   // Creem: Products → Easy Wizard → Share → copy the payment link and paste it here
   // (looks like https://www.creem.io/payment/prod_...). Empty = Buy buttons scroll to the pricing card.
-  checkoutUrl: "",
+  checkoutUrl: "https://www.creem.io/payment/prod_50AVJ7uVJwtvuwPqLZERGb",
 
   // Pricing card: current price, old (crossed-out) price and the discount badge.
   // Set oldPrice to "" when the sale ends (the crossed-out price and the badge disappear).
