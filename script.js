@@ -14,8 +14,8 @@ const SITE = {
   oldPrice: "$49.99",
 
   // Direct download links for the free 14-day demo (same installers as the full version).
-  downloadWindows: "",   // e.g. link to EasyWizard-1.0.0-Windows-Setup.exe
-  downloadMac: "",       // e.g. link to EasyWizard-1.0.0-macOS.zip
+  downloadWindows: "downloads/EasyWizard-1.0.0-Windows-Setup.exe",   // e.g. link to EasyWizard-1.0.0-Windows-Setup.exe
+  downloadMac: "downloads/EasyWizard-1.0.0-macOS.zip",       // e.g. link to EasyWizard-1.0.0-macOS.zip
 
   // License activation server (Cloudflare Worker), used by activate.html.
   activateUrl: "https://ewf-activate.pinqsnake.workers.dev",
