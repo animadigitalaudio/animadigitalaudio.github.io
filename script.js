@@ -1,5 +1,5 @@
 /* =====================================================================
-   Easy Wizard — site behaviour
+   Anima Digital Audio — site behaviour (Easy Wizard: index.html, ADA Dissolve: dissolve.html)
    EDIT THE SETTINGS BELOW before publishing.
    ===================================================================== */
 
@@ -13,7 +13,7 @@ const SITE = {
   price: "$29.99",
   oldPrice: "$49.99",
 
-  // Direct download links for the free 14-day demo (same installers as the full version).
+  // Direct download links for the free demo (60 minutes of play; same installers as the full version).
   downloadWindows: "downloads/EasyWizard-1.0.0-Windows-Setup.exe",   // e.g. link to EasyWizard-1.0.0-Windows-Setup.exe
   downloadMac: "downloads/EasyWizard-1.0.0-macOS.zip",       // e.g. link to EasyWizard-1.0.0-macOS.zip
 
@@ -24,36 +24,57 @@ const SITE = {
   supportEmail: "support@animadigitalaudio.com",
 
   // Name shown as the seller in the Terms and Privacy pages (legal name of a sole proprietor).
-  legalName: "Anima Digital Audio"
+  legalName: "Anima Digital Audio",
+
+  // ADA Dissolve (dissolve.html) - its own checkout, price and downloads. Empty values:
+  // checkoutUrl "" -> Buy buttons say "coming soon", price "" -> "Coming soon", downloads "" -> "coming soon".
+  dissolve: {
+    // Creem: Products -> ADA Dissolve -> Share -> payment link (https://www.creem.io/payment/prod_...)
+    checkoutUrl: "",
+    price: "",
+    oldPrice: "",
+    downloadWindows: "",   // e.g. downloads/ADA-Dissolve-0.2.0-Windows-Setup.exe
+    downloadMac: ""        // e.g. downloads/ADA-Dissolve-0.2.0-macOS.zip
+  }
 };
+
+// the settings of the product this page is about
+const PRODUCT = document.body && document.body.getAttribute("data-product") === "dissolve"
+  ? Object.assign({}, SITE, SITE.dissolve, { key: "dissolve" })
+  : Object.assign({}, SITE, { key: "easywizard" });
 
 document.documentElement.classList.remove("no-js");
 
 /* ---------- configuration → page ---------- */
 (function applyConfig () {
   // Buy buttons → Creem checkout page (or scroll to the pricing card while no link is set)
-  if (SITE.checkoutUrl) {
-    document.querySelectorAll("[data-checkout]").forEach(function (a) {
-      a.href = SITE.checkoutUrl;
+  document.querySelectorAll("[data-checkout]").forEach(function (a) {
+    if (PRODUCT.checkoutUrl) {
+      a.href = PRODUCT.checkoutUrl;
       a.rel = "noopener";
-    });
-  }
+    } else if (PRODUCT.key === "dissolve") {
+      a.addEventListener("click", function (e) {
+        if (!a.closest(".nav") && !a.closest(".hero")) e.preventDefault();   // the card's own button
+        toast("Checkout opens soon — write to " + SITE.supportEmail + " to reserve your license");
+      });
+    }
+  });
 
   var price = document.querySelector("[data-price]");
   var oldPrice = document.querySelector("[data-price-old]");
   var badge = document.querySelector("[data-price-badge]");
   var note = document.querySelector(".price__note");
-  if (price && SITE.price) price.textContent = SITE.price;
-  var now = parseFloat(String(SITE.price).replace(/[^0-9.]/g, ""));
-  var was = parseFloat(String(SITE.oldPrice).replace(/[^0-9.]/g, ""));
-  if (SITE.oldPrice && was > now) {
-    if (oldPrice) oldPrice.innerHTML = "<s>" + SITE.oldPrice + "</s>";
+  if (price && PRODUCT.price) price.textContent = PRODUCT.price;
+  var now = parseFloat(String(PRODUCT.price).replace(/[^0-9.]/g, ""));
+  var was = parseFloat(String(PRODUCT.oldPrice).replace(/[^0-9.]/g, ""));
+  if (PRODUCT.oldPrice && was > now) {
+    if (oldPrice) oldPrice.innerHTML = "<s>" + PRODUCT.oldPrice + "</s>";
     if (badge) badge.textContent = "\u2212" + Math.round((1 - now / was) * 100) + "%";
   } else {
     [oldPrice, badge, note].forEach(function (el) { if (el) el.remove(); });
   }
 
-  var downloads = { win: SITE.downloadWindows, mac: SITE.downloadMac };
+  var downloads = { win: PRODUCT.downloadWindows, mac: PRODUCT.downloadMac };
   document.querySelectorAll("[data-download]").forEach(function (a) {
     var url = downloads[a.getAttribute("data-download")];
     if (url) {
@@ -132,20 +153,6 @@ document.documentElement.classList.remove("no-js");
   });
 })();
 
-/* ---------- Wizard Chaos cube: click = roll ---------- */
-(function cube () {
-  var btn = document.querySelector(".wcube");
-  if (!btn) return;
-  var body = btn.querySelector(".wcube__body");
-  var x = 0, y = 0;
-  btn.addEventListener("click", function () {
-    // 2-3 full turns plus a random face, like a real throw
-    x += 360 * (2 + Math.floor(Math.random() * 2)) + 90 * Math.floor(Math.random() * 4);
-    y += 360 * (2 + Math.floor(Math.random() * 2)) + 90 * Math.floor(Math.random() * 4);
-    body.style.transform = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
-  });
-})();
-
 /* ---------- reveal on scroll ---------- */
 (function reveal () {
   var items = document.querySelectorAll(".reveal");
@@ -160,7 +167,7 @@ document.documentElement.classList.remove("no-js");
         io.unobserve(en.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  }, { threshold: 0, rootMargin: "0px 0px -40px 0px" });
   items.forEach(function (el, i) {
     el.style.transitionDelay = (i % 3) * 70 + "ms";
     io.observe(el);
@@ -230,9 +237,35 @@ function toast (msg) {
   var again = document.getElementById("act-again");
   var blobUrl = "";
 
-  // ?key=... in the link pre-fills the key
+  // ?key=... pre-fills the key, ?product=dissolve picks ADA Dissolve (the plug-in opens it like that)
   var q = new URLSearchParams(location.search);
   if (q.get("key")) form.key.value = q.get("key");
+  var TEXT = {
+    easywizard: {
+      name: "Easy Wizard",
+      sub: "One license unlocks Easy Wizard (Synth) and Easy Wizard (Fx) on one computer.",
+      hwid: "In the plug-in: click the <strong>TRIAL MODE</strong> badge → <strong>COPY</strong>. Use the Hardware ID of the computer you make music on — one license activates one computer.",
+      next: "Now open Easy Wizard, click <strong>TRIAL MODE</strong> → <strong>LOAD LICENSE FILE</strong> and select <code>license.lic</code> (usually in your Downloads folder). Done — both plug-ins are unlocked."
+    },
+    dissolve: {
+      name: "ADA Dissolve",
+      sub: "One license unlocks ADA Dissolve on one computer. With internet on that computer you can also activate right in the plug-in: TRIAL → name + key → ACTIVATE.",
+      hwid: "In the plug-in: click <strong>TRIAL</strong> at the top → <strong>COPY</strong> next to the Hardware ID. Use the Hardware ID of the computer you make music on — one license activates one computer.",
+      next: "Now open ADA Dissolve, click <strong>TRIAL</strong> → <strong>LOAD LICENSE FILE</strong> and select <code>license.lic</code> (usually in your Downloads folder). Done — it unlocks at once."
+    }
+  };
+  function product () { var r = form.querySelector("input[name=product]:checked"); return r ? r.value : "easywizard"; }
+  function showProduct () {
+    var t = TEXT[product()];
+    document.querySelectorAll("[data-act-product]").forEach(function (el) { el.textContent = t.name; });
+    [["[data-act-sub]", "sub"], ["[data-act-hwid]", "hwid"], ["[data-act-next]", "next"]].forEach(function (x) {
+      var el = document.querySelector(x[0]); if (el) el.innerHTML = t[x[1]];
+    });
+    document.documentElement.classList.toggle("theme-dissolve", product() === "dissolve");
+  }
+  if (q.get("product") === "dissolve") form.querySelector("input[value=dissolve]").checked = true;
+  form.querySelectorAll("input[name=product]").forEach(function (r) { r.addEventListener("change", showProduct); });
+  showProduct();
 
   function say (text, kind) {
     msg.textContent = text;
@@ -262,7 +295,7 @@ function toast (msg) {
     fetch(SITE.activateUrl.replace(/\/$/, "") + "/activate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ key: key, hwid: hwid, name: name })
+      body: JSON.stringify({ key: key, hwid: hwid, name: name, product: product() === "dissolve" ? "dissolve" : "" })
     }).then(function (r) { return r.json(); }).then(function (j) {
       if (!j.ok) throw new Error(j.error || "Activation failed.");
       if (blobUrl) URL.revokeObjectURL(blobUrl);

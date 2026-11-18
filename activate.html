@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Activate Easy Wizard — Anima Digital Audio</title>
-  <meta name="description" content="Activate your Easy Wizard license: enter your license key and Hardware ID to download license.lic.">
+  <title>Activate your license — Anima Digital Audio</title>
+  <meta name="description" content="Activate your Easy Wizard or ADA Dissolve license: enter your license key and Hardware ID to download license.lic.">
   <meta name="theme-color" content="#07090d">
   <meta name="robots" content="noindex">
   <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -27,25 +27,30 @@
       <a href="index.html#activation">License</a>
       <a href="index.html#mac">Mac Guide</a>
       <a href="index.html#pricing">Pricing</a>
-      <a class="btn btn--small btn--primary" data-checkout href="index.html#pricing">Buy Now</a>
+      <a class="nav__product" href="dissolve.html"><img src="assets/ada-dissolve.png" alt="" width="22" height="22">ADA Dissolve</a>
     </nav>
   </div>
 </header>
 <main class="legal">
   <div class="wrap legal__wrap">
     <p class="eyebrow">License</p>
-    <h1>Activate Easy Wizard</h1>
-    <p class="legal__date">One license unlocks Easy Wizard (Synth) and Easy Wizard (Fx) on your computer.</p>
+    <h1>Activate <span data-act-product>Easy Wizard</span></h1>
+    <p class="legal__date" data-act-sub>One license unlocks Easy Wizard (Synth) and Easy Wizard (Fx) on one computer.</p>
 
     <section>
       <form class="act" id="act" novalidate>
+        <fieldset class="act__product">
+          <legend>Plug-in</legend>
+          <label><input type="radio" name="product" value="easywizard" checked><img src="assets/ada-easy-wizard.png" alt="" width="28" height="28">Easy Wizard</label>
+          <label><input type="radio" name="product" value="dissolve"><img src="assets/ada-dissolve.png" alt="" width="28" height="28">ADA Dissolve</label>
+        </fieldset>
         <label>License key
           <input name="key" autocomplete="off" spellcheck="false" placeholder="From your purchase e-mail" required>
           <small>Shown after payment and in your Creem receipt e-mail.</small>
         </label>
         <label>Hardware ID
           <input name="hwid" autocomplete="off" spellcheck="false" placeholder="1A2B-3C4D-5E6F-7A8B-9C0D" required>
-          <small>In the plug-in: click the <strong>TRIAL MODE</strong> badge → <strong>COPY</strong>. Use the Hardware ID of the computer you make music on.</small>
+          <small data-act-hwid>In the plug-in: click the <strong>TRIAL MODE</strong> badge → <strong>COPY</strong>. Use the Hardware ID of the computer you make music on — one license activates one computer.</small>
         </label>
         <label>Your name
           <input name="name" autocomplete="name" maxlength="80" placeholder="e.g. Alex Smith" required>
@@ -57,7 +62,7 @@
 
       <div class="act__done" id="act-done">
         <p><strong>Your license file is ready.</strong> If the download didn't start, <a class="link" id="act-again" href="#">click here</a>.</p>
-        <p>Now open Easy Wizard, click <strong>TRIAL MODE</strong> → <strong>LOAD LICENSE FILE</strong> and select <code>license.lic</code> (usually in your Downloads folder). Done — both plug-ins are unlocked.</p>
+        <p data-act-next>Now open Easy Wizard, click <strong>TRIAL MODE</strong> → <strong>LOAD LICENSE FILE</strong> and select <code>license.lic</code> (usually in your Downloads folder). Done — both plug-ins are unlocked.</p>
       </div>
     </section>
 
@@ -71,7 +76,7 @@
   <div class="wrap footer__inner">
     <div class="footer__brand">
       <img src="assets/logo-mark.png" alt="" width="44" height="44" loading="lazy">
-      <div><strong>Anima Digital Audio</strong><small>Easy Wizard (Synth) · Easy Wizard (Fx)</small></div>
+      <div><strong>Anima Digital Audio</strong><small>Easy Wizard (Synth) · Easy Wizard (Fx) · ADA Dissolve</small></div>
     </div>
     <nav class="footer__links" aria-label="Legal">
       <a href="index.html">Home</a>

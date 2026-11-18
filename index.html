@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Easy Wizard — Synth &amp; Fx plugin by Anima Digital Audio</title>
-  <meta name="description" content="Easy Wizard (Synth) and Easy Wizard (Fx): a hybrid sampler-synth and multi-effect plugin with 15 glitch and space modules, the 3D Wizard Chaos cube, macros, LFO and envelope follower. VST3 / AU for Windows and macOS (Apple Silicon + Intel).">
+  <meta name="description" content="Easy Wizard (Synth) and Easy Wizard (Fx): a hybrid sampler-synth and multi-effect plugin with 15 glitch and space modules, the Wizard Chaos orb, three drawable LFOs, macros and an envelope follower. VST3 / AU for Windows and macOS (Apple Silicon + Intel). Free 60-minute trial.">
   <meta name="theme-color" content="#07090d">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Easy Wizard — Synth &amp; Fx by Anima Digital Audio">
-  <meta property="og:description" content="Hybrid sampler-synth and multi-effect plugin. VST3 / AU, Windows &amp; macOS. Free 14-day trial.">
+  <meta property="og:description" content="Hybrid sampler-synth and multi-effect plugin. VST3 / AU, Windows &amp; macOS. Free 60-minute trial.">
   <meta property="og:image" content="https://animadigitalaudio.com/assets/ui-synth.jpg">
   <meta property="og:url" content="https://animadigitalaudio.com/">
   <link rel="canonical" href="https://animadigitalaudio.com/">
@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="style.css">
 
   <script src="script.js" defer></script>
+  <script src="assets/wizard-orb.js" defer></script>
 </head>
 <body>
 
@@ -45,6 +46,7 @@
       <a href="#mac">Mac Guide</a>
       <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
+      <a class="nav__product" href="dissolve.html"><img src="assets/ada-dissolve.png" alt="" width="22" height="22">ADA Dissolve</a>
       <a class="btn btn--small btn--primary" data-checkout href="#pricing">Buy Now</a>
     </nav>
   </div>
@@ -75,7 +77,7 @@
       <ul class="hero__facts">
         <li><strong>15</strong> FX modules</li>
         <li><strong>2</strong> plug-ins in one license</li>
-        <li><strong>14</strong>-day full trial</li>
+        <li><strong>60</strong>-minute full trial</li>
       </ul>
     </div>
 
@@ -85,11 +87,11 @@
         <button role="tab" aria-selected="false" data-shot="fx">Easy Wizard (Fx)</button>
       </div>
       <div class="shot-frame">
-        <!-- Replace with a GIF / video of the Wizard Chaos cube any time: keep the same class -->
+        <!-- screenshots: assets/ui-synth.jpg / assets/ui-fx.jpg (made with levelcheck --screenshot) -->
         <img class="shot is-active" data-shot="synth" src="assets/ui-synth.jpg" width="1240" height="1000"
-             alt="Easy Wizard (Synth) interface: source and result waveforms, Rhythm, Texture and Space module tabs, the Wizard Chaos cube, macros and a keyboard">
+             alt="Easy Wizard (Synth) interface: the SOURCE waveform with START and END, three drawable LFOs, the Wizard Chaos orb, macros, the FX modules and a keyboard">
         <img class="shot" data-shot="fx" src="assets/ui-fx.jpg" width="1240" height="1000" loading="lazy"
-             alt="Easy Wizard (Fx) interface in Simple mode: live track input, three macros, the Wizard Chaos cube and a grid of 15 FX modules">
+             alt="Easy Wizard (Fx) interface in Simple mode: the live track waveform, three drawable LFOs, three macros, the Wizard Chaos orb and a grid of 15 FX modules">
       </div>
       <figcaption>Actual plug-in interface</figcaption>
     </figure>
@@ -119,33 +121,22 @@
         </ul>
       </article>
 
-      <article class="card card--cube reveal">
-        <div class="wcube-stage">
-          <button class="wcube" type="button" aria-label="Roll the Wizard Chaos cube">
-            <span class="wcube__spin">
-              <span class="wcube__body">
-                <span class="f f1"><i class="c"></i></span>
-                <span class="f f2"><i class="tl"></i><i class="br"></i></span>
-                <span class="f f3"><i class="tl"></i><i class="c"></i><i class="br"></i></span>
-                <span class="f f4"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></span>
-                <span class="f f5"><i class="tl"></i><i class="tr"></i><i class="c"></i><i class="bl"></i><i class="br"></i></span>
-                <span class="f f6"><i class="tl"></i><i class="tr"></i><i class="ml"></i><i class="mr"></i><i class="bl"></i><i class="br"></i></span>
-              </span>
-            </span>
-          </button>
-          <span class="wcube__shadow" aria-hidden="true"></span>
-          <span class="wcube__hint">Click to roll</span>
+      <article class="card card--orb reveal">
+        <div class="orb-stage">
+          <img class="orb-fallback" src="assets/wizard-orb.jpg" alt="" width="360" height="360" loading="lazy">
+          <canvas class="orb-canvas" data-orb aria-label="Wizard Chaos orb: move to steer, click to ignite"></canvas>
+          <span class="orb-hint">Move · click to ignite</span>
         </div>
-        <h3>Wizard Chaos cube</h3>
-        <p>One click on the 3D cube rolls a new combination of modules and settings, instantly and from the very first click. <em>Chaos</em> sets how wild it gets, <em>Interplay</em> how the modules work together. Love a result? <em>Save As</em> keeps it as your own preset.</p>
+        <h3>Wizard Chaos orb</h3>
+        <p>One click on the orb rolls a new combination of modules and settings, instantly and from the very first click — the core flares, lightning runs through the glass and the flow surges. <em>Chaos</em> sets how wild it gets, <em>Interplay</em> how the modules work together. Love a result? <em>Save As</em> keeps it as your own preset.</p>
       </article>
 
       <article class="card reveal">
         <div class="card__icon" aria-hidden="true">
           <svg viewBox="0 0 48 48"><path d="M4 24c5-14 9-14 14 0s9 14 14 0 9-14 12-6" /><circle cx="24" cy="24" r="2" /></svg>
         </div>
-        <h3>LFO, Envelope Follower &amp; Macros</h3>
-        <p>A tempo-synced LFO and an envelope follower can drive any module parameter. Three macros, each with its own target and depth, put the moves you need under one knob — perfect for automation.</p>
+        <h3>3 LFOs, Envelope Follower &amp; Macros</h3>
+        <p>Three independent LFOs with Serum-style point editing: click to add a point, drag the dot between two points to bend the curve. Drag the LFO onto any knob to modulate it — each LFO has its own colour, and every knob it moves lights up in that colour. An envelope follower and three macros complete the set.</p>
       </article>
 
       <article class="card reveal">
@@ -153,7 +144,7 @@
           <svg viewBox="0 0 48 48"><rect x="6" y="8" width="10" height="32" rx="2"/><rect x="19" y="16" width="10" height="24" rx="2"/><rect x="32" y="4" width="10" height="36" rx="2"/></svg>
         </div>
         <h3>15 modules, 3 worlds</h3>
-        <p><strong>Rhythm:</strong> Stutter, Reverse, Tape Stop, Half-Time, Duck. <strong>Texture:</strong> Granular, Comb, Freq Shift, Drive, Crush. <strong>Space:</strong> Wow, Filter, Delay, Reverb, Dimension.</p>
+        <p><strong>Rhythm:</strong> Stutter, Reverse, Pitch, Half-Time, Duck. <strong>Texture:</strong> Granular, Comb, Freq Shift, Gate, Crush. <strong>Space:</strong> Wow, Filter, Delay, Reverb, Dimension. Pitch shifts ±12 semitones, Gate chops in sync with your DAW's tempo.</p>
       </article>
 
       <article class="card reveal">
@@ -161,7 +152,7 @@
           <svg viewBox="0 0 48 48"><path d="M8 34V14l12 10-12 10zM28 14h12M28 24h12M28 34h12"/></svg>
         </div>
         <h3>Synth &amp; Fx versions</h3>
-        <p><strong>Synth</strong> loads any sample and plays it with MIDI through the whole engine. <strong>Fx</strong> sits on any track and processes its audio in real time, and a sidechain input can drive the Duck module.</p>
+        <p><strong>Synth</strong> loads any sample and plays it with MIDI through the whole engine — audition files right in the browser, then drag START and END straight on the waveform. <strong>Fx</strong> sits on any track and processes its audio in real time, with a live waveform of the track and a sidechain input for the Duck module.</p>
       </article>
 
       <article class="card card--wide-end reveal">
@@ -180,8 +171,8 @@
   <div class="wrap demo reveal">
     <div>
       <p class="eyebrow">Free demo</p>
-      <h2>Try everything for 14 days</h2>
-      <p class="section__lead">The demo is the full plug-in: every module, every preset, no noise bursts and no limits. When you're ready, activate it with your license and keep working on the same projects.</p>
+      <h2>Try everything for 60 minutes of play</h2>
+      <p class="section__lead">The demo is the full plug-in: every module, every preset, no noise bursts and no limits. Only the time sound actually runs through it counts — an open project that sits silent costs nothing. When you're ready, activate it with your license and keep working on the same projects.</p>
     </div>
     <div class="demo__buttons">
       <a class="dl" data-download="win" href="#">
@@ -221,7 +212,8 @@
         <li>VST3, AU and Windows standalone</li>
         <li>Universal Binary for Apple Silicon &amp; Intel</li>
         <li>Offline activation — no account, no iLok</li>
-        <li>Free 14-day trial before you buy</li>
+        <li>One license = one computer</li>
+        <li>Free 60-minute trial before you buy</li>
       </ul>
       <a class="btn btn--primary btn--large btn--block" data-checkout href="#pricing">Buy Now</a>
       <p class="price__secure">Secure checkout by Creem · merchant of record · VAT handled</p>
@@ -257,7 +249,7 @@
       <li class="step reveal">
         <span class="step__n">04</span>
         <h3>Load it — done</h3>
-        <p>Click <strong>LOAD LICENSE FILE</strong> and pick <code>license.lic</code>. Both Synth and Fx are unlocked, no internet connection needed.</p>
+        <p>Click <strong>LOAD LICENSE FILE</strong> and pick <code>license.lic</code>. Both Synth and Fx are unlocked on this computer, no internet connection needed. One license activates one computer — new machine? Just write to support.</p>
       </li>
     </ol>
   </div>
@@ -308,6 +300,21 @@ killall -9 AudioComponentRegistrar</code></pre>
   </div>
 </section>
 
+<!-- ============================== MORE FROM ADA ============================== -->
+<section class="section" id="more">
+  <div class="wrap">
+    <a class="promo reveal" href="dissolve.html">
+      <img src="assets/ada-dissolve.png" alt="" width="96" height="96" loading="lazy">
+      <span class="promo__copy">
+        <span class="eyebrow">New from Anima Digital Audio</span>
+        <strong class="promo__title">ADA Dissolve</strong>
+        <span class="promo__lead">Four pieces of analogue hardware in one plug-in: a tube preamp, a bucket-brigade delay, a spring tank and an opto tremolo. 280 presets.</span>
+      </span>
+      <span class="btn btn--chrome">Discover</span>
+    </a>
+  </div>
+</section>
+
 <!-- ============================== CONTACT ============================== -->
 <section class="section section--band" id="contact">
   <div class="wrap contact reveal">
@@ -331,7 +338,7 @@ killall -9 AudioComponentRegistrar</code></pre>
       <img src="assets/logo-mark.png" alt="" width="44" height="44" loading="lazy">
       <div>
         <strong>Anima Digital Audio</strong>
-        <small>Easy Wizard (Synth) · Easy Wizard (Fx)</small>
+        <small>Easy Wizard (Synth) · Easy Wizard (Fx) · <a href="dissolve.html">ADA Dissolve</a></small>
       </div>
     </div>
     <nav class="footer__links" aria-label="Support">
