@@ -30,9 +30,9 @@ const SITE = {
   // checkoutUrl "" -> Buy buttons say "coming soon", price "" -> "Coming soon", downloads "" -> "coming soon".
   dissolve: {
     // Creem: Products -> ADA Dissolve -> Share -> payment link (https://www.creem.io/payment/prod_...)
-    checkoutUrl: "",
-    price: "",
-    oldPrice: "",
+    checkoutUrl: "https://www.creem.io/payment/prod_5SiVbdrITi9Vqr2mFnhYOk",
+    price: "$24.99",
+    oldPrice: "$39.99",
     downloadWindows: "",   // e.g. downloads/ADA-Dissolve-0.2.0-Windows-Setup.exe
     downloadMac: ""        // e.g. downloads/ADA-Dissolve-0.2.0-macOS.zip
   }
