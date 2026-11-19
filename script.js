@@ -43,7 +43,7 @@ const SITE = {
     checkoutUrl: "",
     price: "",
     oldPrice: "",
-    downloadWindows: "",   // downloads/ADA-ALLOY-1.0.0-Windows-Setup.exe
+    downloadWindows: "downloads/ADA-ALLOY-1.0.0-Windows-Setup.exe",
     downloadMac: "downloads/ADA-ALLOY-1.0.0-macOS.zip"
   }
 };
