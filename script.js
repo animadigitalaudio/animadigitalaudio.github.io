@@ -1,5 +1,5 @@
 /* =====================================================================
-   Anima Digital Audio — site behaviour (Easy Wizard: index.html, ADA Dissolve: dissolve.html)
+   Anima Digital Audio — site behaviour (Easy Wizard: index.html, ADA Dissolve: dissolve.html, ADA ALLOY: alloy.html)
    EDIT THE SETTINGS BELOW before publishing.
    ===================================================================== */
 
@@ -35,13 +35,24 @@ const SITE = {
     oldPrice: "$39.99",
     downloadWindows: "",   // e.g. downloads/ADA-Dissolve-0.2.0-Windows-Setup.exe
     downloadMac: ""        // e.g. downloads/ADA-Dissolve-0.2.0-macOS.zip
+  },
+
+  // ADA ALLOY (alloy.html) - its own checkout, price and downloads (same rules as above)
+  alloy: {
+    // Creem: Products -> ADA ALLOY -> Share -> payment link (https://www.creem.io/payment/prod_...)
+    checkoutUrl: "",
+    price: "",
+    oldPrice: "",
+    downloadWindows: "",   // downloads/ADA-ALLOY-1.0.0-Windows-Setup.exe
+    downloadMac: ""        // downloads/ADA-ALLOY-1.0.0-macOS.zip
   }
 };
 
 // the settings of the product this page is about
-const PRODUCT = document.body && document.body.getAttribute("data-product") === "dissolve"
-  ? Object.assign({}, SITE, SITE.dissolve, { key: "dissolve" })
-  : Object.assign({}, SITE, { key: "easywizard" });
+const PAGE_PRODUCT = document.body ? document.body.getAttribute("data-product") : "";
+const PRODUCT = PAGE_PRODUCT === "dissolve" ? Object.assign({}, SITE, SITE.dissolve, { key: "dissolve" })
+              : PAGE_PRODUCT === "alloy"    ? Object.assign({}, SITE, SITE.alloy, { key: "alloy" })
+              : Object.assign({}, SITE, { key: "easywizard" });
 
 document.documentElement.classList.remove("no-js");
 
@@ -52,7 +63,7 @@ document.documentElement.classList.remove("no-js");
     if (PRODUCT.checkoutUrl) {
       a.href = PRODUCT.checkoutUrl;
       a.rel = "noopener";
-    } else if (PRODUCT.key === "dissolve") {
+    } else if (PRODUCT.key === "dissolve" || PRODUCT.key === "alloy") {
       a.addEventListener("click", function (e) {
         if (!a.closest(".nav") && !a.closest(".hero")) e.preventDefault();   // the card's own button
         toast("Checkout opens soon — write to " + SITE.supportEmail + " to reserve your license");
@@ -237,7 +248,7 @@ function toast (msg) {
   var again = document.getElementById("act-again");
   var blobUrl = "";
 
-  // ?key=... pre-fills the key, ?product=dissolve picks ADA Dissolve (the plug-in opens it like that)
+  // ?key=... pre-fills the key, ?product=dissolve / ?product=alloy picks that plug-in
   var q = new URLSearchParams(location.search);
   if (q.get("key")) form.key.value = q.get("key");
   var TEXT = {
@@ -252,6 +263,12 @@ function toast (msg) {
       sub: "One license unlocks ADA Dissolve on one computer. With internet on that computer you can also activate right in the plug-in: TRIAL → name + key → ACTIVATE.",
       hwid: "In the plug-in: click <strong>TRIAL</strong> at the top → <strong>COPY</strong> next to the Hardware ID. Use the Hardware ID of the computer you make music on — one license activates one computer.",
       next: "Now open ADA Dissolve, click <strong>TRIAL</strong> → <strong>LOAD LICENSE FILE</strong> and select <code>license.lic</code> (usually in your Downloads folder). Done — it unlocks at once."
+    },
+    alloy: {
+      name: "ADA ALLOY",
+      sub: "One license unlocks ADA ALLOY on one computer. With internet on that computer you can also activate right in the plug-in: TRIAL → name + key → ACTIVATE.",
+      hwid: "In the plug-in: click <strong>TRIAL</strong> at the top → <strong>COPY</strong> next to the Hardware ID. Use the Hardware ID of the computer you make music on — one license activates one computer.",
+      next: "Now open ADA ALLOY, click <strong>TRIAL</strong> → <strong>LOAD LICENSE FILE...</strong> and select <code>license.lic</code> (usually in your Downloads folder). Done — it unlocks at once."
     }
   };
   function product () { var r = form.querySelector("input[name=product]:checked"); return r ? r.value : "easywizard"; }
@@ -262,8 +279,10 @@ function toast (msg) {
       var el = document.querySelector(x[0]); if (el) el.innerHTML = t[x[1]];
     });
     document.documentElement.classList.toggle("theme-dissolve", product() === "dissolve");
+    document.documentElement.classList.toggle("theme-alloy", product() === "alloy");
   }
   if (q.get("product") === "dissolve") form.querySelector("input[value=dissolve]").checked = true;
+  if (q.get("product") === "alloy") form.querySelector("input[value=alloy]").checked = true;
   form.querySelectorAll("input[name=product]").forEach(function (r) { r.addEventListener("change", showProduct); });
   showProduct();
 
@@ -295,7 +314,7 @@ function toast (msg) {
     fetch(SITE.activateUrl.replace(/\/$/, "") + "/activate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ key: key, hwid: hwid, name: name, product: product() === "dissolve" ? "dissolve" : "" })
+      body: JSON.stringify({ key: key, hwid: hwid, name: name, product: product() === "easywizard" ? "" : product() })
     }).then(function (r) { return r.json(); }).then(function (j) {
       if (!j.ok) throw new Error(j.error || "Activation failed.");
       if (blobUrl) URL.revokeObjectURL(blobUrl);
