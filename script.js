@@ -40,8 +40,8 @@ const SITE = {
   // ADA ALLOY (alloy.html) - its own checkout, price and downloads (same rules as above)
   alloy: {
     // Creem: Products -> ADA ALLOY -> Share -> payment link (https://www.creem.io/payment/prod_...)
-    checkoutUrl: "",
-    price: "",
+    checkoutUrl: "https://www.creem.io/payment/prod_6RmcYrAlz7F8Z1ict4s4ue",
+    price: "$24.99",
     oldPrice: "",
     downloadWindows: "downloads/ADA-ALLOY-1.0.0-Windows-Setup.exe",
     downloadMac: "downloads/ADA-ALLOY-1.0.0-macOS.zip"
