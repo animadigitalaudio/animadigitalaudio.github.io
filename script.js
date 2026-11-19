@@ -44,7 +44,7 @@ const SITE = {
     price: "",
     oldPrice: "",
     downloadWindows: "",   // downloads/ADA-ALLOY-1.0.0-Windows-Setup.exe
-    downloadMac: ""        // downloads/ADA-ALLOY-1.0.0-macOS.zip
+    downloadMac: "downloads/ADA-ALLOY-1.0.0-macOS.zip"
   }
 };
 
