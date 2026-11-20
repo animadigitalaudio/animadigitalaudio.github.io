@@ -1,368 +1,162 @@
 <!doctype html>
-<html lang="en" class="no-js theme-alloy">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ADA ALLOY — analog console strip plugin by Anima Digital Audio</title>
-  <meta name="description" content="ADA ALLOY: an analog console strip in one plug-in — preamp, glue compressor, warm saturator, stereo dimension, air band and a small room, in any order. Makes tracks and mixes denser and more expensive without damaging them. VST3 / AU for Windows and macOS. Free 60-minute trial.">
-  <meta name="theme-color" content="#0b0909">
-
+  <title>ADA ALLOY — analog console strip plug-in | Anima Digital Audio</title>
+  <meta name="description" content="ADA ALLOY: preamp, glue compressor, saturator, stereo dimension, air band and room in one analog console strip. VST3 and AU for Windows and macOS. Free 60-minute trial.">
+  <meta name="theme-color" content="#1c1b1f">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ADA ALLOY — analog console strip by Anima Digital Audio">
-  <meta property="og:description" content="Preamp, glue, saturation, width, air and room — the analog finishing stage for vocals, instruments, buses and masters. VST3 / AU, Windows &amp; macOS. Free 60-minute trial.">
-  <meta property="og:image" content="https://animadigitalaudio.com/assets/ui-alloy.jpg">
+  <meta property="og:title" content="ADA ALLOY — analog console strip plug-in | Anima Digital Audio">
+  <meta property="og:description" content="ADA ALLOY: preamp, glue compressor, saturator, stereo dimension, air band and room in one analog console strip. VST3 and AU for Windows and macOS. Free 60-minute trial.">
+  <meta property="og:image" content="https://animadigitalaudio.com/assets/covers/ada-alloy-cover-wide.jpg">
   <meta property="og:url" content="https://animadigitalaudio.com/alloy.html">
-  <link rel="canonical" href="https://animadigitalaudio.com/alloy.html">
-
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="assets/favicon-alloy.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon-alloy.png">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="preload" href="assets/fonts/AnimaDisplay.woff" as="font" type="font/woff" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
   <script src="script.js" defer></script>
 </head>
-<body data-product="alloy">
-
-<!-- ============================== HEADER ============================== -->
-<header class="nav" id="top">
-  <div class="nav__inner">
-    <a class="brand" href="#top" aria-label="ADA ALLOY — top of the page">
-      <img src="assets/logo-mark-alloy.png" alt="" width="42" height="42">
-      <span>Anima <em>Digital Audio</em></span>
-    </a>
-
-    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
-      <span></span><span></span>
-    </button>
-
-    <nav class="nav__links" id="nav-links">
-      <a href="#features">Features</a>
-      <a href="#activation">License</a>
-      <a href="#mac">Mac Guide</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact">Contact</a>
-      <a class="nav__product" href="index.html"><img src="assets/ada-easy-wizard.png" alt="" width="22" height="22">Easy Wizard</a>
-      <a class="nav__product" href="dissolve.html"><img src="assets/ada-dissolve.png" alt="" width="22" height="22">ADA Dissolve</a>
-      <a class="btn btn--small btn--primary" data-checkout href="#pricing">Buy Now</a>
+<body class="p-alloy" data-product="alloy">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top__in">
+    <a class="brand" href="index.html"><img src="assets/ada-studio.png" alt="" width="34" height="34"><span>Anima Digital Audio</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav class="menu" id="menu" aria-label="Main">
+      <a class="plugin-link" href="easy-wizard.html" style="--c: var(--ew)"><i></i>Easy Wizard</a> <a class="plugin-link" href="dissolve.html" style="--c: var(--dissolve)"><i></i>ADA Dissolve</a> <a class="plugin-link" href="alloy.html" style="--c: var(--alloy)" aria-current="page"><i></i>ADA ALLOY</a>
+      <a href="activate.html">Activate</a>
+      <a href="index.html#support">Support</a>
     </nav>
   </div>
 </header>
 
-<main>
-
-<!-- ============================== HERO ============================== -->
-<section class="hero">
-  <div class="hero__glow" aria-hidden="true"></div>
-  <div class="hero__grid" aria-hidden="true"></div>
-
-  <div class="wrap hero__inner">
-    <div class="hero__copy reveal">
-      <p class="eyebrow"><span class="dot"></span>VST3 · AU · Windows &amp; macOS</p>
-      <h1 class="hero__title hero__title--long"><span>ADA</span> <span>ALLOY</span></h1>
-      <p class="hero__tags"><span>Analog console strip</span></p>
-      <p class="hero__lead">
-        The finishing stage of a big analog desk in one plug-in. Six studio modules — preamp,
-        glue compressor, warm saturator, stereo dimension, air band and a small room — that make
-        a vocal, a guitar, a drum bus or a whole mix denser, wider and more expensive, without
-        damaging it.
-      </p>
-
-      <div class="hero__cta">
-        <a class="btn btn--primary btn--large" data-checkout href="#pricing">Buy Now</a>
-        <a class="btn btn--chrome btn--large" href="#demo">Get Free Demo</a>
+<main id="main">
+  <section class="p-hero">
+    <div class="wrap">
+      <div class="p-hero__head">
+        <div>
+          <div class="p-hero__kicker"><img src="assets/ada-alloy.png" alt="" width="44" height="44"><span>Analog console strip</span></div>
+          <h1 class="p-hero__name">ADA ALLOY</h1>
+          <p class="lede p-hero__lede">The finishing stage of a big analog desk in one plug-in. Six modules make a vocal, a guitar, a drum bus or a whole mix denser, wider and more finished, without damaging it.</p>
+        </div>
+        <div class="p-hero__buy">
+          <a class="btn btn--buy" data-checkout href="#price"><span data-label>Buy</span> <span class="price-tag" data-price></span></a>
+          <a class="btn btn--line" href="#trial">Download free trial</a>
+          <p class="small muted">VST3 and AU. Windows and macOS.</p>
+        </div>
       </div>
-
-      <ul class="hero__facts">
-        <li><strong>6</strong> studio modules</li>
-        <li><strong>39</strong> presets</li>
-        <li><strong>60</strong>-minute full trial</li>
-      </ul>
+      <div class="p-hero__shot"><div class="frame"><img src="assets/ui-alloy.jpg" alt="ADA ALLOY interface" width="1600" height="800"></div></div>
     </div>
+  </section>
 
-    <figure class="hero__shot reveal">
-      <div class="shot-frame shot-frame--strip">
-        <img class="shot is-active" src="assets/ui-alloy.jpg" width="1600" height="800"
-             alt="ADA ALLOY interface: six embroidered module patches — Preamp, Glue, Saturator, Dimension, Air, Room — each with its own display, knobs and band control, and the master section with the MAGNITUDE knob">
-      </div>
-      <figcaption>Actual plug-in interface</figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- ============================== WHAT IT IS ============================== -->
-<section class="section" id="what">
-  <div class="wrap">
-    <header class="section__head reveal">
-      <p class="eyebrow">What it is for</p>
-      <h2>Glue, colour and space.<br><span class="chrome">The last 10 % of a mix.</span></h2>
-      <p class="section__lead">A track straight out of the DAW often sounds correct but small and dry. On a real console it would pass through a preamp, a bus compressor, some tape or valve colour, a touch of top end and a room — and come back thicker and finished. ADA ALLOY is that path: put it on a vocal, an instrument, a bus or the master, turn <em>MAGNITUDE</em>, and the sound gets denser and more glued while staying clean. <em>GAIN MATCH</em> keeps the loudness equal, so you hear the character, not just “louder”.</p>
-    </header>
-    <ul class="ticks reveal">
-      <li><strong>Vocals</strong> — presence, density and a short room that sits the voice in the track</li>
-      <li><strong>Guitars &amp; keys</strong> — valve warmth, width and air without harsh top</li>
-      <li><strong>Bass &amp; drums</strong> — glue and punch; the low end stays mono and tight (LOW KEEP)</li>
-      <li><strong>Mix bus &amp; master</strong> — the “expensive” finish in one knob, loudness-matched</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ============================== FEATURES ============================== -->
-<section class="section section--band" id="features">
-  <div class="wrap">
-    <header class="section__head reveal">
-      <p class="eyebrow">The strip</p>
-      <h2>Six modules.<br><span class="chrome">Any order, one clean path.</span></h2>
-      <p class="section__lead">Drag the patches to change the order, switch modules on and off, and give every module its own frequency band. Each one shows what it does on its own little display. Everything is oversampled where it matters — no digital grit, no aliasing sand.</p>
-    </header>
-
-    <div class="features">
-      <article class="card card--wide reveal">
-        <div class="card__icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48"><rect x="14" y="6" width="20" height="26" rx="10"/><path d="M20 32v8M28 32v8M18 18h12M24 12v14"/></svg>
-        </div>
-        <h3>Pr · Preamp</h3>
-        <p>A console / valve input stage: <em>Console</em>, <em>Tube</em> and <em>Tape</em> characters, Drive up to +14 dB, Warmth and Trim. A smooth soft-knee curve with gentle even harmonics, 4× oversampled — it thickens and warms, it never fuzzes.</p>
-        <ul class="ticks">
-          <li>Console, Tube and Tape characters</li>
-          <li>4× oversampling, highs and sub protected from the curve</li>
-          <li>The display shows the real transfer curve</li>
-        </ul>
-      </article>
-
-      <article class="card reveal">
-        <div class="card__icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48"><path d="M6 34h10l6-16 6 16h14"/><path d="M6 14h36" opacity=".5"/></svg>
-        </div>
-        <h3>Gl · Glue</h3>
-        <p>A bus compressor that holds a mix together: Squeeze, Punch and Mix, a fixed musical 3:1 with soft knee and auto release, and a 90 Hz side-chain filter so the bass never pumps it.</p>
-      </article>
-
-      <article class="card reveal">
-        <div class="card__icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48"><path d="M6 36c8 0 10-24 18-24s10 24 18 24"/></svg>
-        </div>
-        <h3>Sa · Saturator</h3>
-        <p>Warm harmonic density with three characters — <em>2nd</em> (even, warm), <em>3rd</em> (odd, edge) and <em>Soft</em> (only the peaks). 4× oversampled with pre- and de-emphasis: dense, not muddy.</p>
-      </article>
-
-      <article class="card reveal">
-        <div class="card__icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48"><circle cx="17" cy="24" r="10"/><circle cx="31" cy="24" r="10"/></svg>
-        </div>
-        <h3>Di · Dimension</h3>
-        <p>Four classic stereo-widening modes plus Width and Depth. It works on the sides only, so the mono sum stays exactly as it was — safe on vocals, bass and masters.</p>
-      </article>
-
-      <article class="card reveal">
-        <div class="card__icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48"><path d="M4 34h16c8 0 10-20 24-20"/></svg>
-        </div>
-        <h3>Ai · Air</h3>
-        <p>A broad, silky high shelf at 10, 15, 20 or 30 kHz — the gentle analog air band. A dynamic de-harsh keeps the 5 kHz region smooth while you lift the top.</p>
-      </article>
-
-      <article class="card reveal">
-        <div class="card__icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48"><path d="M6 40V8h36v32"/><path d="M14 32l6-8 6 4 8-12" /></svg>
-        </div>
-        <h3>Rm · Room</h3>
-        <p>A small, believable space: true-stereo early reflections before a dense tail, Size, Decay and Ducking (the room steps back while the source plays). Filtered at 120 Hz and 9 kHz so it reads as space, never as boom.</p>
-      </article>
-
-      <article class="card card--wide-end reveal">
-        <div class="card__icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><path d="M24 24l8-10"/></svg>
-        </div>
-        <h3>Master: MAGNITUDE, LOW KEEP, GAIN MATCH</h3>
-        <p><strong>MAGNITUDE</strong> scales the whole strip with one knob. <strong>LOW KEEP</strong> sends the lows past the modules and keeps them mono. <strong>WIDTH</strong>, input / output trims and <strong>GAIN MATCH</strong> (loudness-matched A/B) finish it off. 39 presets for vocals, guitars, bass, drums, keys and mix bus / master, with undo / redo.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== DEMO ============================== -->
-<section class="section" id="demo">
-  <div class="wrap demo reveal">
-    <div>
-      <p class="eyebrow">Free demo</p>
-      <h2>Play it for a full hour</h2>
-      <p class="section__lead">The demo is the complete plug-in with every module and every preset. Only the time sound actually runs through it counts — a silent project costs nothing. When the hour is used up, ADA ALLOY simply bypasses itself until you activate it; your mix never goes silent.</p>
-    </div>
-    <div class="demo__buttons">
-      <a class="dl" data-download="win" href="#">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5l7.5-1v7H3zm8.5-1.2L21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zm8.5 0H21V21l-9.5-1.3z"/></svg>
-        <span><strong>Windows</strong><small>Installer · VST3 · 64-bit</small></span>
-      </a>
-      <a class="dl" data-download="mac" href="#">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.6zM14.1 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
-        <span><strong>macOS</strong><small>VST3 + AU · Apple Silicon &amp; Intel</small></span>
-      </a>
-      <p class="demo__note">Mac users: see the <a href="#mac">one-time install step</a> below.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== PRICING ============================== -->
-<section class="section section--band" id="pricing">
-  <div class="wrap">
-    <header class="section__head section__head--center reveal">
-      <p class="eyebrow">Pricing</p>
-      <h2>One license. <span class="chrome">The whole strip.</span></h2>
-    </header>
-
-    <div class="price reveal">
-      <div class="price__top">
-        <h3>ADA ALLOY</h3>
-        <p class="price__sub">Windows &amp; macOS</p>
-        <div class="price__row">
-          <span class="price__old" data-price-old></span>
-          <span class="price__amount" data-price>Coming soon</span>
-          <span class="price__badge" data-price-badge></span>
-        </div>
-        <p class="price__note">Launch price</p>
-      </div>
-      <ul class="ticks">
-        <li>Preamp, Glue, Saturator, Dimension, Air, Room — in any order</li>
-        <li>MAGNITUDE, LOW KEEP, WIDTH, GAIN MATCH</li>
-        <li>39 presets, undo / redo</li>
-        <li>VST3 and AU, Universal Binary for Apple Silicon &amp; Intel</li>
-        <li>Activation inside the plug-in — no account, no iLok</li>
-        <li>One license = one computer</li>
-        <li>Free 60-minute trial before you buy</li>
-      </ul>
-      <a class="btn btn--primary btn--large btn--block" data-checkout href="#pricing">Buy Now</a>
-      <p class="price__secure">Secure checkout by Creem · merchant of record · VAT handled</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== LICENSE & ACTIVATION ============================== -->
-<section class="section" id="activation">
-  <div class="wrap">
-    <header class="section__head reveal">
-      <p class="eyebrow">License &amp; activation</p>
-      <h2>Buy, activate, <span class="chrome">mix.</span></h2>
-      <p class="section__lead">Your order is processed by Creem, our reseller and merchant of record. The license key arrives instantly, and you activate right inside the plug-in — it unlocks at once, no restart.</p>
-    </header>
-
-    <ol class="steps">
-      <li class="step reveal">
-        <span class="step__n">01</span>
-        <h3>Check out</h3>
-        <p>Pay securely through Creem — or click <strong>TRIAL</strong> → <strong>BUY ADA ALLOY</strong> in the plug-in. Your <strong>license key</strong> is shown right after payment and sent to you by e-mail.</p>
-      </li>
-      <li class="step reveal">
-        <span class="step__n">02</span>
-        <h3>Open TRIAL</h3>
-        <p>Click <strong>TRIAL</strong> at the top of the plug-in. Enter your name and paste the license key.</p>
-      </li>
-      <li class="step reveal">
-        <span class="step__n">03</span>
-        <h3>Press ACTIVATE</h3>
-        <p>ADA ALLOY unlocks immediately on this computer and works offline from then on. One license activates one computer.</p>
-      </li>
-      <li class="step reveal">
-        <span class="step__n">04</span>
-        <h3>No internet there?</h3>
-        <p>Press <strong>COPY</strong> next to the Hardware ID, use the <a class="link" href="activate.html?product=alloy">activation page</a> on any device and load the <code>license.lic</code> you get with <strong>LOAD LICENSE FILE</strong>.</p>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<!-- ============================== MAC GUIDE ============================== -->
-<section class="section section--band" id="mac">
-  <div class="wrap mac">
-    <header class="section__head reveal">
-      <p class="eyebrow">macOS installation</p>
-      <h2>Double-click <span class="chrome">and you're in.</span></h2>
-      <p class="section__lead">ADA ALLOY is distributed outside the Mac App Store, so macOS Gatekeeper quarantines the download and may say the plug-in "is damaged" or "can't be verified". The files are fine — the installer removes the quarantine flag for you.</p>
-    </header>
-
-    <div class="mac__grid">
-      <ol class="mac__steps reveal">
-        <li><strong>Easiest:</strong> unzip the download and double-click <code>Install ADA ALLOY.command</code>. If macOS blocks it, right-click → <em>Open</em> → <em>Open</em>.</li>
-        <li>Enter your Mac password when asked — it stays invisible while you type.</li>
-        <li><strong>Manual:</strong> copy <code>ADA ALLOY.vst3</code> to <code>/Library/Audio/Plug-Ins/VST3/</code> and <code>ADA ALLOY.component</code> to <code>/Library/Audio/Plug-Ins/Components/</code>, then run the command on the right.</li>
-        <li>Restart your DAW or rescan plug-ins. ADA ALLOY is listed under <em>Anima Digital Audio</em>.</li>
-      </ol>
-
-      <div class="code-stack reveal">
-        <div class="code">
-          <div class="code__bar">
-            <span class="code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="code__title">After a manual install</span>
-            <button class="copy" data-copy-target="cmd-alloy" type="button">Copy</button>
-          </div>
-          <pre id="cmd-alloy"><code>sudo xattr -rd com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/ADA ALLOY.vst3"
-sudo xattr -rd com.apple.quarantine "/Library/Audio/Plug-Ins/Components/ADA ALLOY.component"
-killall -9 AudioComponentRegistrar</code></pre>
-        </div>
-        <p class="code-note">Keep the quotes — the file names contain spaces.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== MORE FROM ADA ============================== -->
-<section class="section" id="more">
-  <div class="wrap">
-    <a class="promo promo--ew reveal" href="dissolve.html">
-      <img src="assets/ada-dissolve.png" alt="" width="96" height="96" loading="lazy">
-      <span class="promo__copy">
-        <span class="eyebrow">Also from Anima Digital Audio</span>
-        <strong class="promo__title">ADA Dissolve</strong>
-        <span class="promo__lead">Four pieces of vintage hardware in one rack: a valve preamp, a bucket-brigade delay, a spring tank you can kick and an opto tremolo.</span>
-      </span>
-      <span class="btn btn--chrome">Discover</span>
-    </a>
-  </div>
-</section>
-
-<!-- ============================== CONTACT ============================== -->
-<section class="section" id="contact">
-  <div class="wrap contact reveal">
-    <div>
-      <p class="eyebrow">Contact &amp; support</p>
-      <h2>Questions? <span class="chrome">Write to us.</span></h2>
-      <p class="section__lead">Installation, activation, licenses, refunds or anything else — we answer by e-mail, usually within 24 hours.</p>
-    </div>
-    <a class="contact__mail" href="mailto:support@animadigitalaudio.com">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-      <span><small>Customer support</small><strong data-email>support@animadigitalaudio.com</strong></span>
-    </a>
-  </div>
-</section>
-</main>
-
-<!-- ============================== FOOTER ============================== -->
-<footer class="footer">
-  <div class="wrap footer__inner">
-    <div class="footer__brand">
-      <img src="assets/logo-mark-alloy.png" alt="" width="44" height="44" loading="lazy">
+  <section class="section" id="what">
+    <div class="wrap split">
       <div>
-        <strong>Anima Digital Audio</strong>
-        <small>ADA ALLOY · <a href="dissolve.html">ADA Dissolve</a> · <a href="index.html">Easy Wizard</a></small>
+        <h2 class="h-l" style="margin-bottom: 20px">Glue, colour and space</h2>
+        <p>A track straight out of the DAW often sounds correct but small and dry. On a real console it would pass through a preamp, a bus compressor, some tape or valve colour, a lift at the top and a room, and come back thicker.</p><p>ADA ALLOY is that path. Turn MAGNITUDE and the sound gets denser and more glued while staying clean. GAIN MATCH keeps the loudness equal, so you hear the character, not just “louder”.</p>
+      </div>
+      <ul class="uses"><li><b>Vocals</b><span>Presence, density and a short room that seats the voice.</span></li><li><b>Guitars and keys</b><span>Valve warmth, width and air without a harsh top.</span></li><li><b>Bass and drums</b><span>Glue and punch, with the low end kept mono and tight.</span></li><li><b>Mix bus and master</b><span>The finishing touch in one knob, loudness-matched.</span></li></ul>
+    </div>
+  </section>
+
+  <section class="section" id="inside">
+    <div class="wrap">
+      <div class="section__head"><h2 class="h-l">The strip</h2><p class="lede">Six modules in any order. Drag them to re-order, switch them on and off, and give each one its own frequency band.</p></div>
+      <div class="parts">
+        <div class="part"><h3>Preamp<small>Console · Tube · Tape</small></h3><div><p>A console or valve input stage with Drive up to +14 dB, Warmth and Trim. A smooth soft-knee curve with gentle even harmonics, 4× oversampled: it thickens and warms, it never fuzzes.</p></div></div>
+        <div class="part"><h3>Glue<small>Bus compressor</small></h3><div><p>Squeeze, Punch and Mix on a musical 3:1 with soft knee and auto release, and a 90 Hz sidechain filter so the bass never pumps it.</p></div></div>
+        <div class="part"><h3>Saturator<small>2nd · 3rd · Soft</small></h3><div><p>Warm harmonic density with even, odd or peak-only character. 4× oversampled with pre- and de-emphasis: dense, not muddy.</p></div></div>
+        <div class="part"><h3>Dimension<small>Four stereo modes</small></h3><div><p>Width and Depth on the sides only, so the mono sum stays exactly as it was. Safe on vocals, bass and masters.</p></div></div>
+        <div class="part"><h3>Air<small>10 · 15 · 20 · 30 kHz</small></h3><div><p>A broad, silky high shelf. A dynamic de-harsh keeps the 5 kHz region smooth while you lift the top.</p></div></div>
+        <div class="part"><h3>Room<small>Size · Decay · Ducking</small></h3><div><p>True-stereo early reflections before a dense tail. The room steps back while the source plays, and is filtered so it reads as space, never as boom.</p></div></div>
+        <div class="part"><h3>Master<small>MAGNITUDE · LOW KEEP · GAIN MATCH</small></h3><div><p>MAGNITUDE scales the whole strip. LOW KEEP sends the lows past the modules and keeps them mono. Width, input and output trims, 39 presets, undo and redo.</p></div></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="trial">
+    <div class="wrap deal">
+      <div class="deal__box">
+        <h3 class="h-m">Play it for an hour, free</h3>
+        <p>The trial is the complete plug-in with every module and preset. Only the time sound runs through it counts. When the hour is used up, ADA ALLOY bypasses itself, so your mix never goes silent.</p>
+        <div class="dl">
+          <a data-download="win" href="#"><b>Windows</b><span>Installer · VST3 · 64-bit</span><em>Download</em></a>
+          <a data-download="mac" href="#"><b>macOS</b><span>VST3 and AU · Apple Silicon and Intel</span><em>Download</em></a>
+        </div>
+        <p class="fineprint">On a Mac, see the one-time install step below.</p>
+      </div>
+      <div class="deal__box deal__box--price" id="price">
+        <h3 class="h-m">One license, the whole strip</h3>
+        <div class="price"><span class="price__now" data-price></span><span class="price__was" data-price-old></span></div>
+        <p class="price__note" data-price-note></p>
+        <ul class="included"><li>Preamp, Glue, Saturator, Dimension, Air, Room</li><li>MAGNITUDE, LOW KEEP, WIDTH and GAIN MATCH</li><li>39 presets, undo and redo</li><li>Activation inside the plug-in, no account or iLok</li><li>One license activates one computer</li></ul>
+        <a class="btn btn--buy" data-checkout href="#"><span data-label>Buy ADA ALLOY</span></a>
+        <p class="fineprint">Secure checkout by Creem, our merchant of record. VAT is included where it applies. 14-day refund if it doesn't run on your system.</p>
       </div>
     </div>
-    <nav class="footer__links" aria-label="Support">
-      <a href="#mac">Mac installation</a>
-      <a href="activate.html?product=alloy">Activate license</a>
-      <a href="#contact">Support &amp; contact</a>
-      <a href="terms.html">Terms</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="refund.html">Refund Policy</a>
-    </nav>
-    <p class="footer__contact">Support: <a data-email href="mailto:support@animadigitalaudio.com">support@animadigitalaudio.com</a></p>
-    <p class="footer__copy">© 2026 Anima Digital Audio. All rights reserved.<br>
-      <small>VST is a trademark of Steinberg Media Technologies GmbH. Audio Units, macOS and Logic Pro are trademarks of Apple Inc.</small></p>
+  </section>
+
+  <section class="section" id="activation">
+    <div class="wrap">
+      <div class="section__head"><h2 class="h-l">Activating your license</h2><p class="lede">ADA ALLOY activates inside the plug-in in a few seconds, then works offline.</p></div>
+      <ol class="steps"><li><h3>Buy</h3><p>Check out through Creem, or click TRIAL → BUY ADA ALLOY in the plug-in. The license key is shown right after payment and sent by e-mail.</p></li><li><h3>Open TRIAL</h3><p>Click TRIAL at the top of the plug-in, then enter your name and paste the key.</p></li><li><h3>Press ACTIVATE</h3><p>ADA ALLOY unlocks at once, no restart. From then on it works offline.</p></li><li><h3>No internet there?</h3><p>Click COPY next to the Hardware ID, use the <a href="activate.html?product=alloy">activation page</a> on any device, then LOAD LICENSE FILE.</p></li></ol>
+      <div id="mac"><details class="mac">
+        <summary><b class="h-s">Installing on a Mac<span>macOS may call a downloaded plug-in “damaged”. Here's the one-time fix.</span></b></summary>
+        <div class="mac__body">
+          <p class="measure">ADA ALLOY is distributed outside the Mac App Store, so macOS quarantines the download and may say the plug-in “is damaged” or “can't be verified”. The files are fine: the install script removes the quarantine flag.</p>
+          <ol>
+            <li>Unzip the download and double-click <strong>Install ADA ALLOY.command</strong>. If macOS blocks it, right-click it, choose <strong>Open</strong>, then <strong>Open</strong> again.</li>
+            <li>Enter your Mac password when asked. Nothing is shown while you type.</li>
+            <li>Installing by hand instead? Copy <code>ADA ALLOY.vst3</code> to <code>/Library/Audio/Plug-Ins/VST3/</code> and <code>ADA ALLOY.component</code> to <code>/Library/Audio/Plug-Ins/Components/</code>, then run the command below in Terminal.</li>
+            <li>Restart your DAW or rescan plug-ins. ADA ALLOY is listed under Anima Digital Audio.</li>
+          </ol>
+          <div class="cmd"><pre id="mac-cmd">sudo xattr -rd com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/ADA ALLOY.vst3"
+sudo xattr -rd com.apple.quarantine "/Library/Audio/Plug-Ins/Components/ADA ALLOY.component"
+killall -9 AudioComponentRegistrar</pre><button class="btn btn--line btn--small" type="button" data-copy-target="mac-cmd">Copy</button></div>
+          <p class="small muted">Keep the quotes: the file names contain spaces.</p>
+        </div>
+      </details></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head"><h2 class="h-m">Also from Anima Digital Audio</h2></div>
+      <div class="others"><a class="other" href="easy-wizard.html" style="--c: var(--ew)"><img src="assets/ada-easy-wizard.png" alt="" width="56" height="56"><div><b>Easy Wizard</b><span>Sampler-synth and multi-effect with the Chaos orb.</span></div></a><a class="other" href="dissolve.html" style="--c: var(--dissolve)"><img src="assets/ada-dissolve.png" alt="" width="56" height="56"><div><b>ADA Dissolve</b><span>Valve, bucket-brigade echo, spring tank and opto tremolo.</span></div></a></div>
+    </div>
+  </section>
+
+  <section class="section" id="support">
+  <div class="wrap support">
+    <div>
+      <h2 class="h-l" style="margin-bottom: 16px">Questions?</h2>
+      <p class="lede">Installation, activation, moving a license to a new computer, refunds: write to us and we answer by e-mail, usually within a day.</p>
+    </div>
+    <a class="mail" data-email href="mailto:support@animadigitalaudio.com">support@animadigitalaudio.com</a>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <a class="brand" href="index.html"><img src="assets/ada-studio.png" alt="" width="34" height="34" loading="lazy"><span style="color: var(--bone)">Anima Digital Audio</span></a>
+        <p style="margin-top: 14px; max-width: 26em">Independent audio plug-ins for Windows and macOS. Try each one for an hour of play before you buy.</p>
+      </div>
+      <div><h4>Plug-ins</h4><ul><li><a href="easy-wizard.html">Easy Wizard</a></li><li><a href="dissolve.html">ADA Dissolve</a></li><li><a href="alloy.html">ADA ALLOY</a></li></ul></div>
+      <div><h4>Help</h4><ul><li><a href="activate.html">Activate a license</a></li><li><a data-email href="mailto:support@animadigitalaudio.com">support@animadigitalaudio.com</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="terms.html">Terms</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="refund.html">Refunds</a></li></ul></div>
+    </div>
+    <div class="foot__legal">
+      <p style="margin:0">© 2026 Anima Digital Audio. Orders are processed by Creem, our reseller and merchant of record.</p>
+      <p style="margin:0">VST is a trademark of Steinberg Media Technologies GmbH. Audio Units, macOS and Logic Pro are trademarks of Apple Inc.</p>
+    </div>
   </div>
 </footer>
-
 <div class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>

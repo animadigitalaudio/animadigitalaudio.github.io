@@ -4,92 +4,83 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Activate your license — Anima Digital Audio</title>
-  <meta name="description" content="Activate your Easy Wizard or ADA Dissolve license: enter your license key and Hardware ID to download license.lic.">
-  <meta name="theme-color" content="#07090d">
+  <meta name="description" content="Activate Easy Wizard, ADA Dissolve or ADA ALLOY: enter your license key and Hardware ID to get license.lic.">
+  <meta name="theme-color" content="#1c1b1f">
   <meta name="robots" content="noindex">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Activate your license — Anima Digital Audio">
+  <meta property="og:description" content="Activate Easy Wizard, ADA Dissolve or ADA ALLOY: enter your license key and Hardware ID to get license.lic.">
+  <meta property="og:image" content="https://animadigitalaudio.com/assets/covers/easy-wizard-cover-wide.jpg">
+  <meta property="og:url" content="https://animadigitalaudio.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/favicon-studio.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon-studio.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
-<body class="legal-page">
-<header class="nav is-scrolled" id="top">
-  <div class="nav__inner">
-    <a class="brand" href="index.html" aria-label="Anima Digital Audio — home">
-      <img src="assets/logo-mark.png" alt="" width="42" height="42">
-      <span>Anima <em>Digital Audio</em></span>
-    </a>
-    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
-    <nav class="nav__links" id="nav-links">
-      <a href="index.html#features">Features</a>
-      <a href="index.html#activation">License</a>
-      <a href="index.html#mac">Mac Guide</a>
-      <a href="index.html#pricing">Pricing</a>
-      <a class="nav__product" href="dissolve.html"><img src="assets/ada-dissolve.png" alt="" width="22" height="22">ADA Dissolve</a>
-      <a class="nav__product" href="alloy.html"><img src="assets/ada-alloy.png" alt="" width="22" height="22">ADA ALLOY</a>
+<body data-product="">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top__in">
+    <a class="brand" href="index.html"><img src="assets/ada-studio.png" alt="" width="34" height="34"><span>Anima Digital Audio</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav class="menu" id="menu" aria-label="Main">
+      <a class="plugin-link" href="easy-wizard.html" style="--c: var(--ew)"><i></i>Easy Wizard</a> <a class="plugin-link" href="dissolve.html" style="--c: var(--dissolve)"><i></i>ADA Dissolve</a> <a class="plugin-link" href="alloy.html" style="--c: var(--alloy)"><i></i>ADA ALLOY</a>
+      <a href="activate.html" aria-current="page">Activate</a>
+      <a href="index.html#support">Support</a>
     </nav>
   </div>
 </header>
-<main class="legal">
-  <div class="wrap legal__wrap">
-    <p class="eyebrow">License</p>
+
+<main id="main" class="doc">
+  <div class="wrap doc__in">
     <h1>Activate <span data-act-product>Easy Wizard</span></h1>
-    <p class="legal__date" data-act-sub>One license unlocks Easy Wizard (Synth) and Easy Wizard (Fx) on one computer.</p>
-
-    <section>
-      <form class="act" id="act" novalidate>
-        <fieldset class="act__product">
-          <legend>Plug-in</legend>
-          <label><input type="radio" name="product" value="easywizard" checked><img src="assets/ada-easy-wizard.png" alt="" width="28" height="28">Easy Wizard</label>
-          <label><input type="radio" name="product" value="dissolve"><img src="assets/ada-dissolve.png" alt="" width="28" height="28">ADA Dissolve</label>
-          <label><input type="radio" name="product" value="alloy"><img src="assets/ada-alloy.png" alt="" width="28" height="28">ADA ALLOY</label>
-        </fieldset>
-        <label>License key
-          <input name="key" autocomplete="off" spellcheck="false" placeholder="From your purchase e-mail" required>
-          <small>Shown after payment and in your Creem receipt e-mail.</small>
-        </label>
-        <label>Hardware ID
-          <input name="hwid" autocomplete="off" spellcheck="false" placeholder="1A2B-3C4D-5E6F-7A8B-9C0D" required>
-          <small data-act-hwid>In the plug-in: click the <strong>TRIAL MODE</strong> badge → <strong>COPY</strong>. Use the Hardware ID of the computer you make music on — one license activates one computer.</small>
-        </label>
-        <label>Your name
-          <input name="name" autocomplete="name" maxlength="80" placeholder="e.g. Alex Smith" required>
-          <small>Shown in the plug-in as “Licensed to”.</small>
-        </label>
-        <button class="btn btn--primary btn--large" type="submit">Get license file</button>
-        <p class="act__msg" role="status" aria-live="polite"></p>
-      </form>
-
-      <div class="act__done" id="act-done">
-        <p><strong>Your license file is ready.</strong> If the download didn't start, <a class="link" id="act-again" href="#">click here</a>.</p>
-        <p data-act-next>Now open Easy Wizard, click <strong>TRIAL MODE</strong> → <strong>LOAD LICENSE FILE</strong> and select <code>license.lic</code> (usually in your Downloads folder). Done — both plug-ins are unlocked.</p>
-      </div>
-    </section>
-
-    <section>
-      <h2>Need help?</h2>
-      <p>New computer, lost key or anything else — write to <a data-email href="mailto:support@animadigitalaudio.com">support@animadigitalaudio.com</a> with your order number.</p>
-    </section>
+    <p class="lede" data-act-sub>One license unlocks Easy Wizard (Synth) and Easy Wizard (Fx) on one computer.</p>
+    <form class="act" id="act" novalidate>
+      <fieldset><legend>Plug-in</legend><label class="act__pick" style="--c: var(--ew)"><input type="radio" name="product" value="easywizard" checked><img src="assets/ada-easy-wizard.png" alt="" width="44" height="44">Easy Wizard</label><label class="act__pick" style="--c: var(--dissolve)"><input type="radio" name="product" value="dissolve"><img src="assets/ada-dissolve.png" alt="" width="44" height="44">ADA Dissolve</label><label class="act__pick" style="--c: var(--alloy)"><input type="radio" name="product" value="alloy"><img src="assets/ada-alloy.png" alt="" width="44" height="44">ADA ALLOY</label></fieldset>
+      <label class="field">License key
+        <input name="key" autocomplete="off" spellcheck="false" placeholder="From your purchase e-mail" required>
+        <small>Shown after payment and in your Creem receipt e-mail.</small>
+      </label>
+      <label class="field">Hardware ID
+        <input name="hwid" autocomplete="off" spellcheck="false" placeholder="1A2B-3C4D-5E6F-7A8B-9C0D" required>
+        <small data-act-hwid></small>
+      </label>
+      <label class="field">Your name
+        <input name="name" autocomplete="name" maxlength="80" placeholder="Alex Smith" required>
+        <small>Shown in the plug-in as “Licensed to”.</small>
+      </label>
+      <div><button class="btn btn--buy" type="submit">Get license file</button></div>
+      <p class="act__msg" role="status" aria-live="polite"></p>
+    </form>
+    <div class="act__done" id="act-done">
+      <p><strong>Your license file is ready.</strong> If the download didn't start, <a id="act-again" href="#">download it again</a>.</p>
+      <p data-act-next style="margin:0"></p>
+    </div>
+    <h2>Need help?</h2>
+    <p>New computer, lost key or anything else: write to <a data-email href="mailto:support@animadigitalaudio.com">support@animadigitalaudio.com</a> with your order number.</p>
   </div>
 </main>
-<footer class="footer">
-  <div class="wrap footer__inner">
-    <div class="footer__brand">
-      <img src="assets/logo-mark.png" alt="" width="44" height="44" loading="lazy">
-      <div><strong>Anima Digital Audio</strong><small>Easy Wizard (Synth) · Easy Wizard (Fx) · ADA Dissolve</small></div>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <a class="brand" href="index.html"><img src="assets/ada-studio.png" alt="" width="34" height="34" loading="lazy"><span style="color: var(--bone)">Anima Digital Audio</span></a>
+        <p style="margin-top: 14px; max-width: 26em">Independent audio plug-ins for Windows and macOS. Try each one for an hour of play before you buy.</p>
+      </div>
+      <div><h4>Plug-ins</h4><ul><li><a href="easy-wizard.html">Easy Wizard</a></li><li><a href="dissolve.html">ADA Dissolve</a></li><li><a href="alloy.html">ADA ALLOY</a></li></ul></div>
+      <div><h4>Help</h4><ul><li><a href="activate.html">Activate a license</a></li><li><a data-email href="mailto:support@animadigitalaudio.com">support@animadigitalaudio.com</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="terms.html">Terms</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="refund.html">Refunds</a></li></ul></div>
     </div>
-    <nav class="footer__links" aria-label="Legal">
-      <a href="index.html">Home</a>
-      <a data-support href="mailto:support@animadigitalaudio.com">Support &amp; contact</a>
-      <a href="terms.html">Terms</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="refund.html">Refund Policy</a>
-    </nav>
-    <p class="footer__contact">Support: <a data-email href="mailto:support@animadigitalaudio.com">support@animadigitalaudio.com</a></p>
-    <p class="footer__copy">© 2026 Anima Digital Audio. All rights reserved.</p>
+    <div class="foot__legal">
+      <p style="margin:0">© 2026 Anima Digital Audio. Orders are processed by Creem, our reseller and merchant of record.</p>
+      <p style="margin:0">VST is a trademark of Steinberg Media Technologies GmbH. Audio Units, macOS and Logic Pro are trademarks of Apple Inc.</p>
+    </div>
   </div>
 </footer>
+<div class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
