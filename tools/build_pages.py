@@ -286,71 +286,88 @@ def product_page(p):
                    "alloy": "Six-module analog console strip for glue, colour and space."}
     others_html = "".join(f'<a class="other" href="{h}" style="--c: var({v})"><img src="{i}" alt="" width="56" height="56"><div><b>{n}</b><span>{other_lines[k]}</span></div></a>'
                           for k, n, h, i, v in others)
-    uses = "".join(f"<li><b>{a}</b><span>{b}</span></li>" for a, b in p["uses"])
-    parts = "".join(f"""
-        <div class="part"><h3>{t}{('<small>' + s + '</small>') if s else ''}</h3><div><p>{d}</p>{('<ul>' + ''.join('<li>' + x + '</li>' for x in l) + '</ul>') if l else ''}</div></div>"""
-                    for t, s, d, l in p["parts"])
+    uses = "".join(f'<div class="why__use"><h3 class="h-s">{a}</h3><p>{b}</p></div>' for a, b in p["uses"])
+
+    feats = []
+    for f in p["features"]:
+        img, w, h, alt, title, sub, text, chips = f
+        chip_html = ("<ul class=\"chips\">" + "".join(f"<li>{c}</li>" for c in chips) + "</ul>") if chips else ""
+        pic = (f'<figure class="feat__pic"><img src="{img}" alt="{E(alt)}" width="{w}" height="{h}" loading="lazy" decoding="async"></figure>') if img else ""
+        feats.append(f"""
+      <article class="feat{' feat--text' if not img else ''}">
+        {pic}
+        <div class="feat__text">
+          <p class="feat__sub">{sub}</p>
+          <h3 class="feat__title">{title}</h3>
+          <p class="feat__body">{text}</p>
+          {chip_html}
+        </div>
+      </article>""")
+    specs = "".join(f"<dt>{a}</dt><dd>{b}</dd>" for a, b in p["specs"])
     included = "".join(f"<li>{x}</li>" for x in p["included"])
     steps = "".join(f"<li><h3>{a}</h3><p>{b}</p></li>" for a, b in p["steps"])
-    shot = p["shot_html"]
 
     body = f"""<body class="p-{key}" data-product="{key}">
 {header(key)}
 <main id="main">
-  <section class="p-hero">
+  <section class="pd-hero">
+    <div class="wrap pd-hero__in">
+      <img class="pd-hero__plate" src="{p['icon']}" alt="" width="72" height="72">
+      <p class="pd-hero__kind">{p['kind']}</p>
+      <h1 class="pd-hero__name">{p['title_html']}</h1>
+      <p class="pd-hero__lede">{p['lede']}</p>
+      <div class="pd-hero__cta">
+        <a class="btn btn--buy btn--big" data-checkout href="#price"><span data-label>Buy now</span> <span class="price-tag" data-price></span></a>
+        <a class="btn btn--line btn--big" href="#try">Try it free</a>
+      </div>
+      <ul class="badges"><li>60-minute free trial</li><li>No account, no iLok</li><li>{p['badge']}</li></ul>
+    </div>
+    <div class="wrap pd-hero__shot">{p['shot_html']}</div>
+  </section>
+
+  <section class="section why">
     <div class="wrap">
-      <div class="p-hero__head">
-        <div>
-          <div class="p-hero__kicker"><img src="{p['icon']}" alt="" width="44" height="44"><span>{p['kind']}</span></div>
-          <h1 class="p-hero__name">{p['title_html']}</h1>
-          <p class="lede p-hero__lede">{p['lede']}</p>
-        </div>
-        <div class="p-hero__buy">
-          <a class="btn btn--buy" data-checkout href="#price"><span data-label>Buy</span> <span class="price-tag" data-price></span></a>
-          <a class="btn btn--line" href="#trial">Download free trial</a>
-          <p class="small muted">{p['formats_short']}</p>
-        </div>
-      </div>
-      <div class="p-hero__shot">{shot}</div>
+      <h2 class="why__title">Why {name}?</h2>
+      {''.join('<p class="why__text">' + x + '</p>' for x in p['for_text'])}
+      <div class="why__uses">{uses}</div>
     </div>
   </section>
 
-  <section class="section" id="what">
-    <div class="wrap split">
-      <div>
-        <h2 class="h-l" style="margin-bottom: 20px">{p['for_title']}</h2>
-        {''.join('<p>' + x + '</p>' for x in p['for_text'])}
-      </div>
-      <ul class="uses">{uses}</ul>
-    </div>
-  </section>
-
-  <section class="section" id="inside">
+  <section class="section feats" id="features">
     <div class="wrap">
-      <div class="section__head"><h2 class="h-l">{p['inside_title']}</h2><p class="lede">{p['inside_lede']}</p></div>
-      <div class="parts">{parts}</div>
+      <div class="feats__head"><h2 class="h-l">{p['inside_title']}</h2><p class="lede">{p['inside_lede']}</p></div>
+      {''.join(feats)}
     </div>
   </section>
 
-  <section class="section" id="trial">
-    <div class="wrap deal">
-      <div class="deal__box">
-        <h3 class="h-m">Play it for an hour, free</h3>
-        <p>{p['trial_text']}</p>
-        <div class="dl">
-          <a data-download="win" href="#"><b>Windows</b><span>{p['dl_win']}</span><em>Download</em></a>
-          <a data-download="mac" href="#"><b>macOS</b><span>{p['dl_mac']}</span><em>Download</em></a>
-        </div>
-        <p class="fineprint">On a Mac, see the one-time install step below.</p>
+  <section class="section" id="specs">
+    <div class="wrap specs">
+      <h2 class="h-l">Specs</h2>
+      <dl class="specs__list">{specs}</dl>
+    </div>
+  </section>
+
+  <section class="section try" id="try">
+    <div class="wrap try__in">
+      <h2 class="h-l">Try it out</h2>
+      <p class="lede">{p['trial_text']}</p>
+      <div class="dl">
+        <a data-download="win" href="#"><b>Windows</b><span>{p['dl_win']}</span><em>Download</em></a>
+        <a data-download="mac" href="#"><b>macOS</b><span>{p['dl_mac']}</span><em>Download</em></a>
       </div>
-      <div class="deal__box deal__box--price" id="price">
-        <h3 class="h-m">{p['price_title']}</h3>
-        <div class="price"><span class="price__now" data-price></span><span class="price__was" data-price-old></span></div>
-        <p class="price__note" data-price-note></p>
-        <ul class="included">{included}</ul>
-        <a class="btn btn--buy" data-checkout href="#"><span data-label>Buy {name}</span></a>
-        <p class="fineprint">Secure checkout by Creem, our merchant of record. VAT is included where it applies. 14-day refund if it doesn't run on your system.</p>
-      </div>
+      <p class="fineprint">On a Mac, see <a href="#mac">the one-time install step</a>.</p>
+    </div>
+  </section>
+
+  <section class="section buy" id="price">
+    <div class="wrap buy__in">
+      <img src="{p['icon']}" alt="" width="64" height="64">
+      <h2 class="h-m">{p['price_title']}</h2>
+      <div class="price"><span class="price__now" data-price></span><span class="price__was" data-price-old></span></div>
+      <p class="price__note" data-price-note></p>
+      <ul class="included">{included}</ul>
+      <a class="btn btn--buy btn--big" data-checkout href="#"><span data-label>Buy {name}</span></a>
+      <p class="fineprint">Secure checkout by Creem, our merchant of record. VAT is included where it applies. 14-day refund if it doesn't run on your system.</p>
     </div>
   </section>
 
@@ -383,30 +400,58 @@ STEPS_INPLUGIN = lambda name, buy: [
     ("No internet there?", 'Click COPY next to the Hardware ID, use the <a href="activate.html?product=PRODUCT">activation page</a> on any device, then LOAD LICENSE FILE.'),
 ]
 
+F = "assets/feat/"
+
 EW = dict(
     key="easywizard", name="Easy Wizard", file="easy-wizard.html", icon="assets/ada-easy-wizard.png",
     favicon="assets/favicon.png", touch="assets/apple-touch-icon.png", og="assets/covers/easy-wizard-cover-wide.jpg",
     page_title="Easy Wizard — sampler-synth and multi-effect plug-in | Anima Digital Audio",
     desc="Easy Wizard (Synth) and Easy Wizard (Fx): 15 rhythm, texture and space modules, three drawable LFOs and the Chaos orb. VST3 and AU for Windows and macOS. Free 60-minute trial.",
-    kind="Sampler-synth and multi-effect", title_html="Easy Wizard",
-    lede="Two plug-ins on one engine. Easy Wizard (Synth) plays any sample from your keyboard; Easy Wizard (Fx) processes any track. Both run the same fifteen modules, three LFOs and the Chaos orb, and one license unlocks both.",
-    formats_short="VST3 and AU, Windows standalone. Windows and macOS.",
-    shot_html="""<div class="shot-switch" role="tablist" aria-label="Version"><button type="button" role="tab" data-shot="synth" aria-selected="true">Synth</button><button type="button" role="tab" data-shot="fx" aria-selected="false">Fx</button></div>
-      <div class="frame"><img class="shot is-active" data-shot="synth" src="assets/ui-synth.jpg" alt="Easy Wizard (Synth) interface" width="1240" height="1000"><img class="shot" data-shot="fx" src="assets/ui-fx.jpg" alt="Easy Wizard (Fx) interface" width="1240" height="1000" loading="lazy"></div>""",
-    for_title="Built for moving sound",
-    for_text=["Easy Wizard is for producers who want sound that doesn't sit still: chopped, pitched, stretched into space and pulled back again.",
-              "Everything is smoothed inside the audio engine, so you can turn knobs, switch modules and jump between presets while it plays. An automatic gain stage keeps every preset at the level of the dry sound."],
-    uses=[("Sound design", "Load a sample and turn it into a playable, evolving instrument."),
-          ("Beats", "Stutter, reverse, half-time and a tempo-synced gate on drums or loops."),
+    kind="Sampler-synth and multi-effect", title_html="Easy Wizard", badge="Synth + Fx in one license",
+    lede="Two plug-ins on one engine. The Synth plays any sample from your keyboard, the Fx processes any track, and both run fifteen modules, three drawable LFOs and the Chaos orb.",
+    shot_html=f"""<div class="shot-switch" role="tablist" aria-label="Version"><button type="button" role="tab" data-shot="synth" aria-selected="true">Synth</button><button type="button" role="tab" data-shot="fx" aria-selected="false">Fx</button></div>
+      <div class="frame"><img class="shot is-active" data-shot="synth" src="{F}ew-synth-full.jpg" alt="Easy Wizard (Synth) interface" width="2000" height="1612"><img class="shot" data-shot="fx" src="{F}ew-fx-full.jpg" alt="Easy Wizard (Fx) interface" width="2000" height="1612" loading="lazy"></div>""",
+    for_text=["Most effects sit still. Easy Wizard is made for sound that moves: chopped, pitched, smeared into space and pulled back again, in time with your track.",
+              "Everything happens inside one clean engine. Turn knobs, switch modules and jump between presets while it plays, and nothing clicks or jumps in level."],
+    uses=[("Sound design", "Turn a vocal chop or a field recording into a playable instrument."),
+          ("Beats", "Stutter, reverse, half-time and a tempo-synced gate on drums and loops."),
           ("Transitions", "Pitch dives, washes and chaos rolls on a bus or a single track."),
-          ("Live play", "Click-free changes, so you can perform with it.")],
-    inside_title="What's inside", inside_lede="Fifteen modules in three groups, with modulation that you draw and drag.",
-    parts=[("Rhythm", "Stutter · Reverse · Pitch · Half-Time · Duck", "Cut, flip and pitch the sound in time with your DAW. Pitch moves ±12 semitones with a clean, exact shift; Duck listens to a sidechain input.", []),
-           ("Texture", "Granular · Comb · Freq Shift · Gate · Crush", "Grain clouds, metallic combs, frequency shifting, a tempo-synced gate from 1/4 to 1/32 and bit crushing.", []),
-           ("Space", "Wow · Filter · Delay · Reverb · Dimension", "Tape wow, a resonant filter, delay, reverb and stereo dimension to place the result in a room.", []),
-           ("Wizard Chaos orb", "", "One click on the orb rolls a new combination of modules and settings. Chaos sets how wild it gets, Interplay how the modules work together. Keep what you like with Save As.", []),
-           ("Three LFOs, envelope follower and macros", "", "Draw LFO shapes point by point and bend the curves. Drag an LFO onto any knob to modulate it; each LFO has its own colour, and the knobs it moves light up in that colour.", []),
-           ("Synth and Fx", "", "The Synth version loads a sample, previews files in the browser and lets you drag START and END right on the waveform. The Fx version sits on any track with a live waveform and a sidechain input.", [])],
+          ("Performance", "Smoothed controls, so you can ride it live.")],
+    inside_title="Features", inside_lede="A tour of the interface, panel by panel.",
+    features=[
+        (F + "ew-modules.jpg", 864, 795, "The FX modules panel with fifteen module buttons", "Fifteen modules in three worlds", "FX modules",
+         "Light a module to put it in the chain. Rhythm modules cut and flip the sound in time, Texture modules change its grain and colour, Space modules put it in a room. Modules fade in and out instead of switching hard.",
+         ["Rhythm: Stutter, Reverse, Pitch, Half-Time, Duck", "Texture: Granular, Comb, Freq Shift, Gate, Crush", "Space: Wow, Filter, Delay, Reverb, Dimension"]),
+        (F + "ew-advanced.jpg", 1600, 646, "Advanced mode showing the Pitch module's own knobs", "Every knob, when you want it", "Advanced mode",
+         "Simple mode keeps the screen calm. Switch to Advanced and every module opens its own panel: Pitch shifts ±12 semitones with an exact, glitch-free splice and an optional semitone snap; Gate chops from 1/4 to 1/32 in sync with your DAW, with soft edges that never click.",
+         ["Pitch ±12 semitones, Snap", "Gate 1/4 to 1/32, triplets", "Depth and length per module"]),
+        (F + "ew-chaos.jpg", 528, 795, "The Wizard Chaos orb", "Roll a new sound", "Wizard Chaos",
+         "Click the orb and Easy Wizard rolls a fresh combination of modules and settings. The core flares, lightning runs through the glass and the sound changes at once. CHAOS sets how wild the roll is, INTERPLAY how strongly the modules work together. Like the result? SAVE AS keeps it as your own preset.",
+         ["One-click randomiser", "CHAOS and INTERPLAY", "Save the roll as a preset"]),
+        (F + "ew-lfo.jpg", 1206, 333, "The LFO panel with a drawn triangle shape", "Draw the movement", "Three LFOs",
+         "Three independent LFOs, each with its own colour. Pick one of fifteen shapes or draw your own point by point and bend the curves between them. Sync to the host tempo or run free, then drag the DRAG chip onto any knob: the knob lights up in that LFO's colour.",
+         ["15 shapes plus custom points", "Tempo sync or free rate", "Drag onto any knob to modulate"]),
+        (F + "ew-macros.jpg", 1005, 795, "Three macro knobs", "Three hands on the whole patch", "Macros and envelope follower",
+         "Each macro moves the target you choose with its own depth, so one gesture can open a filter while it pushes the reverb. The envelope follower turns the loudness of your track into movement.",
+         ["3 macros with target and depth", "Envelope follower", "LFOs can modulate macros"]),
+        (F + "ew-source.jpg", 1206, 333, "The SOURCE panel with a waveform and START and END markers", "Your sample, on a wave you can grab", "Synth: Source",
+         "Load any sample and play it from MIDI. Drag START and END straight on the waveform, listen to files right in the browser before you load them, and replace the sample with a double-click. In the Fx version the panel shows your track live, with a sidechain input for Duck.",
+         ["Drag START / END on the wave", "5-second preview in the file browser", "Live track view in Fx"]),
+        (F + "ew-sampler.jpg", 1600, 428, "Sampler and output knobs above the keyboard", "Play it like an instrument", "Synth: Sampler and output",
+         "Tune, attack, release, start, end and level shape how each note plays. The keyboard shows the notes as they sound, and the output stage keeps the level steady.",
+         ["Tune, Attack, Release", "Start, End, Level", "On-screen keyboard"]),
+        ("", 0, 0, "", "Never quieter than bypass", "Clean engine",
+         "Every control is smoothed in the audio engine. Auto gain matches the perceived loudness of the processed sound to the dry signal, and a transparent look-ahead limiter catches the peaks at −0.3 dBFS. The result: switching a preset changes the sound, not the volume.",
+         ["Click-free knobs, modules and presets", "Loudness-matched auto gain", "Look-ahead limiter at −0.3 dBFS"]),
+    ],
+    specs=[("Formats", "VST3 on Windows and macOS, Audio Unit on macOS, standalone app on Windows (Synth)"),
+           ("Plug-ins", "Easy Wizard (Synth), instrument; Easy Wizard (Fx), effect with sidechain input"),
+           ("Windows", "Windows 10 or 11, 64-bit"),
+           ("macOS", "macOS 10.13 or newer, Universal Binary for Apple Silicon and Intel"),
+           ("Hosts", "Any 64-bit host that loads VST3 or Audio Units"),
+           ("Graphics", "GPU-drawn Chaos orb with an automatic fallback for older graphics"),
+           ("Activation", "License file bound to one computer, works offline"),
+           ("Trial", "Full version, 60 minutes of play")],
     trial_text="The trial is the full plug-in, Synth and Fx, with every module and preset. Only the time sound runs through it counts. When the hour is used up, the output fades to silence until you activate.",
     dl_win="Installer · VST3 and standalone · 64-bit", dl_mac="VST3 and AU · Apple Silicon and Intel",
     price_title="One license, both plug-ins",
@@ -432,24 +477,49 @@ DISSOLVE = dict(
     favicon="assets/favicon-dissolve.png", touch="assets/apple-touch-icon-dissolve.png", og="assets/covers/ada-dissolve-cover-wide.jpg",
     page_title="ADA Dissolve — vintage hardware FX plug-in | Anima Digital Audio",
     desc="ADA Dissolve: tube preamp, bucket-brigade delay, spring tank and opto tremolo in one plug-in. 280 presets, six macros. VST3 and AU for Windows and macOS. Free 60-minute trial.",
-    kind="Vintage hardware rack", title_html="ADA Dissolve",
-    lede="Four old studio machines in one rack: a valve preamp that warms and breaks up, a bucket-brigade delay whose every repeat gets darker, a spring tank you can kick, and a photocell tremolo that breathes.",
-    formats_short="VST3, AU and standalone. Windows and macOS.",
-    shot_html='<div class="frame"><img src="assets/ui-dissolve.jpg" alt="ADA Dissolve interface" width="1100" height="720"></div>',
-    for_title="Old circuits, clean signal",
-    for_text=["Each block is modelled as a circuit rather than borrowed from a generic effect. Switch blocks on and off, set each one's mix with the fader on its card, and change their order.",
-              "It is made for guitars, keys, synths and vocals that need age and air, without hiss in the pauses or digital grit on top."],
+    kind="Vintage hardware rack", title_html="ADA Dissolve", badge="280 presets",
+    lede="Four old studio machines in one rack: a valve preamp, a bucket-brigade delay whose every repeat gets darker, a spring tank you can kick, and a photocell tremolo that breathes.",
+    shot_html=f'<div class="frame"><img src="{F}dis-main.jpg" alt="ADA Dissolve interface" width="2000" height="1309"></div>',
+    for_text=["Old gear has a way of making a part feel lived-in: the echo that gets darker, the spring that splashes, the lamp that slowly pulses. ADA Dissolve models four of those machines as circuits, and keeps them clean.",
+              "No hiss in the pauses, no digital grit on top, no clicks when you turn a knob or change a preset. Just the character."],
     uses=[("Guitars", "Valve break-up, spring splash and amp-style tremolo."),
-          ("Keys and synths", "Chorus from the bucket-brigade chip and slow, dark echoes."),
+          ("Keys and synths", "Bucket-brigade chorus and slow, dark echoes."),
           ("Vocals", "Warmth and short slap echoes that sit behind the voice."),
-          ("Sound design", "Feedback at the edge of oscillation, and a tank that crashes.")],
-    inside_title="The rack", inside_lede="Four blocks in one signal path. Turn a knob and the sound glides; it never clicks.",
-    parts=[("Tube Preamp", "Dual triode, 4× oversampled", "Clean headroom at low drive, warm thickening in the middle, honest break-up at the top. Asymmetry adds the even harmonics of a real valve, Tone rounds the top end, and the input stays tight so the bass doesn't turn to mud.", []),
-           ("BBD Delay / Chorus", "4096-stage bucket brigade", "A compander, clock noise and filters inside the feedback loop, so every repeat comes back darker. From 5 ms chorus to 900 ms echoes; turning Time bends the pitch like the real chip.", []),
-           ("Spring Tank", "With crash", "Real spring drip, and when you hit the strings hard the tank crashes: crack, thump and rattle, like kicking an old amp. It never triggers on a sustained note.", []),
-           ("Opto Tremolo", "Lamp and photocell", "Fast attack, a slower release that lingers in the dark, up to −24 dB deep. Free-running or locked to your DAW's tempo.", []),
-           ("Six macros", "", "Tone, Drive, Echo, Spring, Tremolo and Mix move the right parameters of every block at once. Open EDIT for every knob of the chain.", []),
-           ("280 presets", "", "24 hand-made sounds and eight families of 32, from Clear Glass to Edge of Feedback, all levelled to the same loudness. Randomize builds a fresh variation of any preset.", [])],
+          ("Sound design", "Feedback at the edge of oscillation and a tank that crashes.")],
+    inside_title="Features", inside_lede="Four blocks in one signal path, six macros on top, every knob one click away.",
+    features=[
+        (F + "dis-chain.jpg", 1600, 190, "The signal chain with four block cards and their mix faders", "Four machines, one signal path", "The rack",
+         "Each block sits on its own card. The amber bar is a fader for that block's mix: pull it to zero and the block switches off and costs no CPU. Change the order of the chain in EDIT, and the sound glides from one setting to the next.",
+         ["Mix fader per block", "0 % CPU when a block is off", "Re-orderable chain"]),
+        (F + "dis-preamp.jpg", 1600, 186, "The Tube Preamp row with its transfer curve", "Warm, then honest break-up", "Tube Preamp",
+         "A dual-triode stage at 4× oversampling. Low drive stays clean, the middle thickens, the top breaks up like a real valve. ASYMMETRY adds even harmonics, TONE rounds the top, and the input stays tight so the bass never turns to mud. The display draws the real transfer curve.",
+         ["Drive, Asymmetry, Tone, Level, Mix", "4× oversampling, no aliasing", "Bass stays tight at full drive"]),
+        (F + "dis-delay.jpg", 1600, 186, "The BBD Delay row with darkening repeats", "Every repeat a little darker", "BBD Delay / Chorus",
+         "A 4096-stage bucket-brigade chip with its compander and filters inside the feedback loop. Set it from a 5 ms chorus to 900 ms echoes. Turning TIME bends the pitch like the real chip, AGE darkens it, and the last part of REPEATS takes you to the edge of oscillation without running away.",
+         ["5–900 ms, chorus to echo", "Mod, Rate, Age, Stereo spread", "Self-oscillation, always bounded"]),
+        (F + "dis-spring.jpg", 1600, 186, "The Spring Tank row with a decaying spring", "A tank you can kick", "Spring Tank",
+         "Real spring drip and splash, from a short slap to a long wash. Hit the strings hard and the tank crashes: a crack, a low thump and a rattle, like kicking an old amp. It only reacts to hits, never to a sustained note.",
+         ["Decay, Tone, Drip, Crash, Mix", "Crash on hard transients", "From short slap to long wash"]),
+        (F + "dis-tremolo.jpg", 1600, 186, "The Opto Tremolo row with a square wave", "A lamp and a photocell", "Opto Tremolo",
+         "The classic amp circuit: a lamp lights a photocell. Fast attack, a slower release that lingers in the dark, up to −24 dB deep. Run it free or lock it to your DAW's tempo.",
+         ["Rate or tempo sync", "Shape and stereo", "Up to −24 dB deep"]),
+        (F + "dis-macros.jpg", 1600, 332, "Six macro knobs", "Six big knobs for the whole rack", "Macros",
+         "TONE, DRIVE, ECHO, SPRING, TREMOLO and MIX move the right parameters of every block at once, so you can play the rack without opening it.",
+         ["Tone, Drive, Echo", "Spring, Tremolo, Mix"]),
+        (F + "dis-edit.jpg", 2000, 1309, "The EDIT page with every block and its display", "Every knob, one page", "EDIT",
+         "Open EDIT and the whole chain unfolds: input gain, low cut and tilt EQ, the four blocks with their live displays, and an output stage with saturation, low-pass, dry/wet and chain order.",
+         ["Input: Gain, Low Cut, Tilt EQ", "Output: Saturate, Low-pass, Dry/Wet", "Chain order"]),
+        ("", 0, 0, "", "280 presets, all at the same loudness", "Presets",
+         "24 hand-made sounds and eight families of 32: Clear Glass, Warm Valves, Swaying Lamps, Long Echoes, Spring Rooms, Wobble & Haze, Heavy Valves and Edge of Feedback. Step through them with the arrows; Randomize builds a fresh variation of any preset.",
+         ["24 hand-made + 256 in 8 families", "Level-matched", "Randomize"]),
+    ],
+    specs=[("Formats", "VST3 on Windows and macOS, Audio Unit on macOS, standalone app on both"),
+           ("Windows", "Windows 10 or 11, 64-bit"),
+           ("macOS", "macOS 10.13 or newer, Universal Binary for Apple Silicon and Intel"),
+           ("Hosts", "Any 64-bit host that loads VST3 or Audio Units"),
+           ("Presets", "280, plus your own in Documents/Anima Digital Audio/ADA Dissolve"),
+           ("Activation", "Inside the plug-in or with a license file, one computer, works offline"),
+           ("Trial", "Full version, 60 minutes of play, then bypass")],
     trial_text="The trial is the complete plug-in with every block and preset. Only the time sound runs through it counts. When the hour is used up, ADA Dissolve bypasses itself, so your mix never goes silent.",
     dl_win="Installer · VST3 and standalone · 64-bit", dl_mac="VST3, AU and app · Apple Silicon and Intel",
     price_title="One license, the whole rack",
@@ -466,30 +536,52 @@ DISSOLVE["mac"] = mac_guide("ADA Dissolve",
                             'killall -9 AudioComponentRegistrar',
                             "Installing by hand instead? Copy <code>ADA Dissolve.vst3</code> to <code>/Library/Audio/Plug-Ins/VST3/</code>, <code>ADA Dissolve.component</code> to <code>/Library/Audio/Plug-Ins/Components/</code> and the app to <code>/Applications</code>, then run the command below in Terminal.")
 
+AL = "Six modules of ADA ALLOY, "
 ALLOY = dict(
     key="alloy", name="ADA ALLOY", file="alloy.html", icon="assets/ada-alloy.png",
     favicon="assets/favicon-alloy.png", touch="assets/apple-touch-icon-alloy.png", og="assets/covers/ada-alloy-cover-wide.jpg",
     page_title="ADA ALLOY — analog console strip plug-in | Anima Digital Audio",
     desc="ADA ALLOY: preamp, glue compressor, saturator, stereo dimension, air band and room in one analog console strip. VST3 and AU for Windows and macOS. Free 60-minute trial.",
-    kind="Analog console strip", title_html="ADA ALLOY",
+    kind="Analog console strip", title_html="ADA ALLOY", badge="One knob: MAGNITUDE",
     lede="The finishing stage of a big analog desk in one plug-in. Six modules make a vocal, a guitar, a drum bus or a whole mix denser, wider and more finished, without damaging it.",
-    formats_short="VST3 and AU. Windows and macOS.",
     shot_html='<div class="frame"><img src="assets/ui-alloy.jpg" alt="ADA ALLOY interface" width="1600" height="800"></div>',
-    for_title="Glue, colour and space",
-    for_text=["A track straight out of the DAW often sounds correct but small and dry. On a real console it would pass through a preamp, a bus compressor, some tape or valve colour, a lift at the top and a room, and come back thicker.",
+    for_text=["A track straight out of the DAW often sounds correct but small and dry. On a real console it would pass through a preamp, a bus compressor, some valve colour, a lift at the top and a room, and come back thicker.",
               "ADA ALLOY is that path. Turn MAGNITUDE and the sound gets denser and more glued while staying clean. GAIN MATCH keeps the loudness equal, so you hear the character, not just “louder”."],
     uses=[("Vocals", "Presence, density and a short room that seats the voice."),
           ("Guitars and keys", "Valve warmth, width and air without a harsh top."),
           ("Bass and drums", "Glue and punch, with the low end kept mono and tight."),
           ("Mix bus and master", "The finishing touch in one knob, loudness-matched.")],
-    inside_title="The strip", inside_lede="Six modules in any order. Drag them to re-order, switch them on and off, and give each one its own frequency band.",
-    parts=[("Preamp", "Console · Tube · Tape", "A console or valve input stage with Drive up to +14 dB, Warmth and Trim. A smooth soft-knee curve with gentle even harmonics, 4× oversampled: it thickens and warms, it never fuzzes.", []),
-           ("Glue", "Bus compressor", "Squeeze, Punch and Mix on a musical 3:1 with soft knee and auto release, and a 90 Hz sidechain filter so the bass never pumps it.", []),
-           ("Saturator", "2nd · 3rd · Soft", "Warm harmonic density with even, odd or peak-only character. 4× oversampled with pre- and de-emphasis: dense, not muddy.", []),
-           ("Dimension", "Four stereo modes", "Width and Depth on the sides only, so the mono sum stays exactly as it was. Safe on vocals, bass and masters.", []),
-           ("Air", "10 · 15 · 20 · 30 kHz", "A broad, silky high shelf. A dynamic de-harsh keeps the 5 kHz region smooth while you lift the top.", []),
-           ("Room", "Size · Decay · Ducking", "True-stereo early reflections before a dense tail. The room steps back while the source plays, and is filtered so it reads as space, never as boom.", []),
-           ("Master", "MAGNITUDE · LOW KEEP · GAIN MATCH", "MAGNITUDE scales the whole strip. LOW KEEP sends the lows past the modules and keeps them mono. Width, input and output trims, 39 presets, undo and redo.", [])],
+    inside_title="Features", inside_lede="Six modules in any order. Drag the patches to re-order, switch modules on and off, and give each one its own frequency band.",
+    features=[
+        (F + "alloy-pre.jpg", 1600, 800, AL + "Preamp highlighted", "Thicker, never fuzzy", "Pr · Preamp",
+         "A console or valve input stage with Console, Tube and Tape characters. Drive goes up to +14 dB through a smooth soft-knee curve with gentle even harmonics, 4× oversampled, with the highs and sub protected from the curve. The display shows the real transfer curve.",
+         ["Console, Tube, Tape", "Drive up to +14 dB, Warmth, Trim", "4× oversampling"]),
+        (F + "alloy-glue.jpg", 1600, 800, AL + "Glue highlighted", "Holds the mix together", "Gl · Glue",
+         "A bus compressor with a fixed, musical 3:1 ratio, soft knee and automatic release. Squeeze sets how hard it holds, Punch lets the transients through, and a 90 Hz sidechain filter keeps the bass from pumping it.",
+         ["Squeeze, Punch, Mix", "3:1, soft knee, auto release", "90 Hz sidechain filter"]),
+        (F + "alloy-sat.jpg", 1600, 800, AL + "Saturator highlighted", "Density, not mud", "Sa · Saturator",
+         "Warm harmonic density in three characters: 2nd for even, warm harmonics, 3rd for odd edge, Soft for the peaks only. 4× oversampled with pre- and de-emphasis.",
+         ["2nd, 3rd, Soft", "Drive, Warmth, Mix", "4× oversampling"]),
+        (F + "alloy-dim.jpg", 1600, 800, AL + "Dimension highlighted", "Wider, and still mono-safe", "Di · Dimension",
+         "Four classic stereo-widening modes with Width and Depth. It works on the sides only, so the mono sum stays exactly as it was: safe on vocals, bass and masters.",
+         ["Modes 1–4", "Width, Depth", "Mono sum untouched"]),
+        (F + "alloy-air.jpg", 1600, 800, AL + "Air highlighted", "Silky top, no harshness", "Ai · Air",
+         "A broad high shelf at 10, 15, 20 or 30 kHz, the gentle analog air band. A dynamic de-harsh keeps the 5 kHz region smooth while you lift the top.",
+         ["10, 15, 20, 30 kHz", "Dynamic de-harsh", "Air Gain"]),
+        (F + "alloy-room.jpg", 1600, 800, AL + "Room highlighted", "Space that reads as space", "Rm · Room",
+         "True-stereo early reflections before a dense tail. Size and Decay set the room; Ducking makes it step back while the source plays and bloom in the gaps. Filtered at 120 Hz and 9 kHz, so it never booms.",
+         ["Size, Decay, Ducking", "Early reflections + dense tail", "No low-end boom"]),
+        (F + "alloy-master.jpg", 1600, 800, AL + "Master section highlighted", "One knob for the whole strip", "Master",
+         "MAGNITUDE scales every module at once. LOW KEEP sends the lows past the modules and keeps them mono, WIDTH sets the overall image, and GAIN MATCH gives you a loudness-matched A/B. 39 presets for vocals, guitars, bass, drums, keys and the mix bus, with undo and redo.",
+         ["MAGNITUDE, LOW KEEP, WIDTH", "GAIN MATCH", "39 presets, undo / redo"]),
+    ],
+    specs=[("Formats", "VST3 on Windows and macOS, Audio Unit on macOS"),
+           ("Windows", "Windows 10 or 11, 64-bit"),
+           ("macOS", "Universal Binary for Apple Silicon and Intel"),
+           ("Hosts", "Any 64-bit host that loads VST3 or Audio Units"),
+           ("Presets", "39, with undo and redo"),
+           ("Activation", "Inside the plug-in or with a license file, one computer, works offline"),
+           ("Trial", "Full version, 60 minutes of play, then bypass")],
     trial_text="The trial is the complete plug-in with every module and preset. Only the time sound runs through it counts. When the hour is used up, ADA ALLOY bypasses itself, so your mix never goes silent.",
     dl_win="Installer · VST3 · 64-bit", dl_mac="VST3 and AU · Apple Silicon and Intel",
     price_title="One license, the whole strip",
